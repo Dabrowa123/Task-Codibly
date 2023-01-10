@@ -69,7 +69,14 @@ export default function DataTable() {
             {rows.map((row: any) => (
               <TableRow
                 key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                style={{
+                  backgroundColor: `${row.color}`,
+                }}
+                sx={{
+                  "&:last-child td, &:last-child th": {
+                    border: 0,
+                  },
+                }}
               >
                 <TableCell component="th" scope="row">
                   {row.id}
