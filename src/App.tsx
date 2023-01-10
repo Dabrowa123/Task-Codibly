@@ -6,7 +6,13 @@ import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
 import DataTable from "./Components/DataTable";
+import Grid from "@mui/material/Grid";
+import SearchForm from "./Components/SearchForm";
 
 function App() {
   return (
@@ -19,14 +25,7 @@ function App() {
               bgcolor: "",
             }}
           >
-            <FormControl>
-              <InputLabel htmlFor="component-outlined">Search by ID</InputLabel>
-              <OutlinedInput
-                id="component-outlined"
-                defaultValue="please, type just numbers"
-                label="Search by ID"
-              />
-            </FormControl>
+            <SearchForm />
             <DataTable />
           </Stack>
         </Box>
