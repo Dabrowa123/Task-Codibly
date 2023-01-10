@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import DataTable from "./Components/DataTable";
 import SearchForm from "./Components/SearchForm";
+import ProductsList from "./Components/ProductsList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Stack>
         </Box>
       </Container>
+      <ProductsList />
     </div>
   );
 }
