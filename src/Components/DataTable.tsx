@@ -4,6 +4,7 @@ import {
   GridColDef,
   GridValueGetterParams,
 } from "@mui/x-data-grid/index.js";
+import axios from "axios";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -37,6 +38,12 @@ const rows = [
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
+
+// const getData = () => {
+//   return axios.get(`https://reqres.in/api/products`);
+// };
+
+// console.log(getData());
 
 export default function DataTable() {
   return (

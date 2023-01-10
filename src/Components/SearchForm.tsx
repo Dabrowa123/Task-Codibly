@@ -6,7 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function SearchForm() {
   return (
-    <FormControl sx={{ margin: 1 }}>
+    <FormControl>
       <InputLabel htmlFor="component-outlined">Search by ID</InputLabel>
       <OutlinedInput
         id="component-outlined"
