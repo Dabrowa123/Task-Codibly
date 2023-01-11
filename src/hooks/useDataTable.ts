@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useFetchProductsQuery } from "../store";
+import { useFetchProductsQuery, RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 
 function useDataTable() {
   const [page, setPage] = React.useState(0);
@@ -25,7 +26,7 @@ function useDataTable() {
     setPage(0);
   };
 
-  let rows = data?.data.map(
+  let rowsData = data?.data.map(
     ({
       id,
       name,
@@ -40,6 +41,20 @@ function useDataTable() {
       pantone_value: string;
     }) => createData(id, name, year, color, pantone_value)
   );
+
+  const searchedId = useSelector((state: RootState) => {
+    return state.searchedId[0];
+  });
+
+  let rows;
+
+  // React.useEffect(() => {
+  if (searchedId === "") {
+    rows = rowsData;
+  } else {
+    rows = rowsData.filter((row: any) => row.id == searchedId);
+  }
+  // }, [searchedId]);
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];
 }

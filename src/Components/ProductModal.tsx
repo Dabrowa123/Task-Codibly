@@ -30,7 +30,6 @@ export default function ProductModal() {
   const dispatch = useDispatch();
   const handleClose = () => dispatch(closeModal(true));
 
-
   return (
     <div>
       <Modal
