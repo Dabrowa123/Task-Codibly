@@ -1,18 +1,19 @@
-import * as React from "react";
 import DataTable from "./DataTable";
 import { useFetchProductsQuery } from "../store";
 
-export default function DataContent() {
+function DataContent() {
   const { error, isLoading } = useFetchProductsQuery();
 
   let content;
   if (isLoading) {
     content = <div>Loading...</div>;
   } else if (error) {
-    content = <div>Error loading albums.</div>;
+    content = <div>An error occured during loading products</div>;
   } else {
     content = <DataTable />;
   }
 
   return <>{content}</>;
 }
+
+export default DataContent;
