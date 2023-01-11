@@ -3,7 +3,7 @@ import "./App.css";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import DataTable from "./Components/DataTable";
+import DataContent from "./Components/DataContent";
 import SearchForm from "./Components/SearchForm";
 import ProductsList from "./Components/ProductsList";
 
@@ -19,7 +19,7 @@ function App() {
             }}
           >
             <SearchForm />
-            <DataTable />
+            <DataContent />
           </Stack>
         </Box>
       </Container>
