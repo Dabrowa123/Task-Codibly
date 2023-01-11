@@ -1,21 +1,18 @@
 import * as React from "react";
 import { useFetchProductsQuery } from "../store";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TablePagination from "@mui/material/TablePagination";
-import Modal from "@mui/material/Modal";
-import Paper from "@mui/material/Paper";
 
 function useDataTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const { data } = useFetchProductsQuery();
-  function createData(id: number, name: string, year: number, color: string) {
-    return { id, name, year, color };
+  function createData(
+    id: number,
+    name: string,
+    year: number,
+    color: string,
+    pantone_value: string
+  ) {
+    return { id, name, year, color, pantone_value };
   }
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -34,12 +31,14 @@ function useDataTable() {
       name,
       year,
       color,
+      pantone_value,
     }: {
       id: number;
       name: string;
       year: number;
       color: string;
-    }) => createData(id, name, year, color)
+      pantone_value: string;
+    }) => createData(id, name, year, color, pantone_value)
   );
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];

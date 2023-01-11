@@ -1,3 +1,4 @@
+import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -5,16 +6,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
-import Modal from "@mui/material/Modal";
 import Paper from "@mui/material/Paper";
+import ProductModal from "./ProductModal";
 import useDataTable from "../hooks/useDataTable";
+import { useDispatch } from "react-redux";
+import { setModalData, openModal } from "../store/index";
 
 function DataTable() {
   const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useDataTable();
 
+  const dispatch = useDispatch();
+  const showModal = (rowData: any) => {
+    dispatch(setModalData(rowData));
+    dispatch(openModal(true));
+  };
+
   return (
     <>
+      <ProductModal />;
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -27,23 +37,24 @@ function DataTable() {
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row: any) => (
+              .map((rowData: any) => (
                 <TableRow
-                  key={row.name}
+                  key={rowData.name}
                   style={{
-                    backgroundColor: `${row.color}`,
+                    backgroundColor: `${rowData.color}`,
                   }}
                   sx={{
                     "&:last-child td, &:last-child th": {
                       border: 0,
                     },
                   }}
+                  onClick={() => showModal(rowData)}
                 >
                   <TableCell component="th" scope="row">
-                    {row.id}
+                    {rowData.id}
                   </TableCell>
-                  <TableCell align="right">{row.name}</TableCell>
-                  <TableCell align="right">{row.year}</TableCell>
+                  <TableCell align="right">{rowData.name}</TableCell>
+                  <TableCell align="right">{rowData.year}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

@@ -9,7 +9,6 @@ function ProductsList() {
   } else if (error) {
     content = <div>Error loading albums.</div>;
   } else {
-    console.log(data);
     // content = data.map((product) => {
     //   return (
     //     <>
