@@ -22,6 +22,13 @@ function DataTable() {
     dispatch(openModal(true));
   };
 
+  function defaultLabelDisplayedRows({ from, to }: any) {
+    return (
+      <div>
+        {from}&nbsp;-&nbsp;{to - 1}
+      </div>
+    );
+  }
   return (
     <>
       <ProductModal />;
@@ -66,10 +73,19 @@ function DataTable() {
         count={12}
         // count={rows.length}
         rowsPerPageOptions={[]}
-        rowsPerPage={rowsPerPage}
+        rowsPerPage={6}
+        // rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        // labelDisplayedRows={ from, to, count, page }
+        // labelDisplayedRows={ from: 1, to: 5, count: 12, page: 1 }
+        // labelDisplayedRows={(page) =>
+        //   `${page.from}-${page.to === -1 ? page.count : page.to} از ${
+        //     page.count
+        //   }`
+        // }
+        labelDisplayedRows={(page) => defaultLabelDisplayedRows(page)}
       />
     </>
   );
