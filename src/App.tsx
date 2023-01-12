@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import DataContent from "./Components/DataContent";
 import SearchForm from "./Components/SearchForm";
-import ProductsList from "./Components/ProductsList";
+// import ProductsList from "./Components/ProductsList";
 import useStatefulURL from "./hooks/useStatefulURL";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           </Stack>
         </Box>
       </Container>
-      <ProductsList />
+      {/* <ProductsList /> */}
     </div>
   );
 }

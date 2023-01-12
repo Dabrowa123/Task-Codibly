@@ -1,7 +1,7 @@
 import { useFetchProductsQuery } from "../store";
 
 function ProductsList() {
-  const { data, error, isLoading } = useFetchProductsQuery();
+  // const { data, error, isLoading } = useFetchProductsQuery();
 
   let content;
   if (isLoading) {

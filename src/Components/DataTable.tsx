@@ -36,7 +36,8 @@ function DataTable() {
           </TableHead>
           <TableBody>
             {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .slice(0, 5)
+              // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((rowData: any) => (
                 <TableRow
                   key={rowData.name}
@@ -62,8 +63,9 @@ function DataTable() {
       </TableContainer>
       <TablePagination
         component="div"
-        count={rows.length}
-        rowsPerPageOptions={[5]}
+        count={12}
+        // count={rows.length}
+        rowsPerPageOptions={[]}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

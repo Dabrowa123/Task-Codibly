@@ -18,6 +18,12 @@ function useStatefulURL() {
   React.useEffect(() => {
     window.location.hash = statefulURL;
   }, [statefulURL]);
+
+  // Pagination
+  const pagination = useSelector((state: RootState) => {
+    return state.statefulURL[1];
+  });
+  console.log(pagination);
   return;
 }
 

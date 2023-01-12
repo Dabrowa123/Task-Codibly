@@ -2,7 +2,7 @@ import DataTable from "./DataTable";
 import { useFetchProductsQuery } from "../store";
 
 function DataContent() {
-  const { error, isLoading } = useFetchProductsQuery();
+  const { error, isLoading } = useFetchProductsQuery("page=1");
 
   let content;
   if (isLoading) {

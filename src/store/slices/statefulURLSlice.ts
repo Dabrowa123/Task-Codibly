@@ -7,8 +7,11 @@ const statefulURLSlice = createSlice({
     addIdToURL(state, action) {
       state[0] = action.payload;
     },
+    addPaginationToURL(state, action) {
+      state[1] = action.payload;
+    },
   },
 });
 
-export const { addIdToURL } = statefulURLSlice.actions;
+export const { addIdToURL, addPaginationToURL } = statefulURLSlice.actions;
 export const statefulURLReducer = statefulURLSlice.reducer;

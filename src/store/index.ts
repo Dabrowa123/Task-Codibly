@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { searchedIdReducer, searchId } from "./slices/searchedIdSlice";
-import { statefulURLReducer, addIdToURL } from "./slices/statefulURLSlice";
+import { statefulURLReducer, addIdToURL, addPaginationToURL } from "./slices/statefulURLSlice";
 import { modalDataReducer, setModalData } from "./slices/modalDataSlice";
 import {
   isModalVisibleReducer,
@@ -25,6 +25,6 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { store, searchId, addIdToURL, setModalData, openModal, closeModal };
+export { store, searchId, addIdToURL, addPaginationToURL, setModalData, openModal, closeModal };
 export { useFetchProductsQuery } from "./apis/productsApi";
 export type RootState = ReturnType<typeof store.getState>;
