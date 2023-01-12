@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, searchId } from "../store/index";
+import { RootState, searchId, addIdToURL } from "../store/index";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
@@ -13,6 +13,8 @@ export default function SearchForm() {
 
   const handleSearchTermChange = (event: any) => {
     dispatch(searchId(event.target.value));
+    dispatch(addIdToURL(event.target.value));
+    // window.location.hash = event.target.value;
   };
 
   return (

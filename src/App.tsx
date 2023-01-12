@@ -6,8 +6,10 @@ import Container from "@mui/material/Container";
 import DataContent from "./Components/DataContent";
 import SearchForm from "./Components/SearchForm";
 import ProductsList from "./Components/ProductsList";
+import useStatefulURL from "./hooks/useStatefulURL";
 
 function App() {
+  useStatefulURL();
   return (
     <div className="App">
       <Container maxWidth="md">

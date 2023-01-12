@@ -17,15 +17,6 @@ const productsApi = createApi({
             method: "GET",
           };
         },
-        // query: (product) => {
-        //   return {
-        //     url: '/products',
-        //     params: {
-        //       productId: product.id,
-        //     },
-        //     method: 'GET',
-        //   };
-        // },
       }),
     };
   },

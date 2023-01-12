@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useFetchProductsQuery, RootState } from "../store";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function useDataTable() {
   const [page, setPage] = React.useState(0);
@@ -48,13 +48,11 @@ function useDataTable() {
 
   let rows;
 
-  // React.useEffect(() => {
   if (searchedId === "") {
     rows = rowsData;
   } else {
     rows = rowsData.filter((row: any) => row.id == searchedId);
   }
-  // }, [searchedId]);
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];
 }
