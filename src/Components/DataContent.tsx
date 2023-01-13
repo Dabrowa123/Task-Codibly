@@ -7,15 +7,23 @@ function DataContent() {
     return state.query[0];
   });
   const { error, isLoading } = useFetchProductsQuery(query);
-  console.log(error);
 
   let content;
   if (isLoading) {
     content = <div>Loading...</div>;
-    // } else if (error?.status === 404) {
-    //   content = <div>An error occured during loading products</div>;
   } else if (error) {
-    content = <div>An error occured during loading products</div>;
+    if ("status" in error) {
+      if (error.status === 404) {
+        content = <div>There is no prodct matching requested ID</div>;
+      } else {
+        content = (
+          <div>
+            <div>An error has occurred</div>
+            <div>Status: {error.status}</div>
+          </div>
+        );
+      }
+    }
   } else {
     content = <DataTable />;
   }
