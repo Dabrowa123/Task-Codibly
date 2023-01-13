@@ -51,9 +51,9 @@ function DataTable() {
               // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((rowData: any) => (
                 <TableRow
-                  key={rowData.name}
+                  key={rowData?.name}
                   style={{
-                    backgroundColor: `${rowData.color}`,
+                    backgroundColor: `${rowData?.color}`,
                   }}
                   sx={{
                     "&:last-child td, &:last-child th": {
@@ -63,10 +63,10 @@ function DataTable() {
                   onClick={() => showModal(rowData)}
                 >
                   <TableCell component="th" scope="row">
-                    {rowData.id}
+                    {rowData?.id}
                   </TableCell>
-                  <TableCell align="right">{rowData.name}</TableCell>
-                  <TableCell align="right">{rowData.year}</TableCell>
+                  <TableCell align="right">{rowData?.name}</TableCell>
+                  <TableCell align="right">{rowData?.year}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

@@ -5,9 +5,8 @@ import { addPaginationToURL, setQuery } from "../store";
 import useFetchData from "./useFetchData";
 
 function useDataTable() {
-  const [data] = useFetchData();
-
   // pagination control
+
   const dispatch = useDispatch();
 
   const [page, setPage] = React.useState(0);
@@ -27,43 +26,19 @@ function useDataTable() {
 
   // Creating rows data
 
+  const [data, error] = useFetchData();
+
   const query = useSelector((state: RootState) => {
     return state.query[0];
   });
 
-  function createData(
-    id: number,
-    name: string,
-    year: number,
-    color: string,
-    pantone_value: string
-  ) {
-    return { id, name, year, color, pantone_value };
-  }
-
-  let rowsData: any;
+  let rows: any;
 
   if (query.match(/id/i)) {
-    rowsData = [data?.data];
+    rows = [data?.data];
   } else {
-    rowsData = data?.data;
+    rows = data?.data;
   }
-
-  let rows = rowsData.map(
-    ({
-      id,
-      name,
-      year,
-      color,
-      pantone_value,
-    }: {
-      id: number;
-      name: string;
-      year: number;
-      color: string;
-      pantone_value: string;
-    }) => createData(id, name, year, color, pantone_value)
-  );
 
   // stateful URL
 
