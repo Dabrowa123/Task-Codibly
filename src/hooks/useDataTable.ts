@@ -2,34 +2,13 @@ import * as React from "react";
 import { useFetchProductsQuery, RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 import { addPaginationToURL, setQuery } from "../store";
+import useFetchData from "./useFetchData";
 
 function useDataTable() {
-  // Query control
-  const dispatch = useDispatch();
-
-  const query = useSelector((state: RootState) => {
-    return state.query[0];
-  });
-
-  // const [query, setQuery] = React.useState("page=1");
-
-  const { data } = useFetchProductsQuery(query);
-
-  const searchedId = useSelector((state: RootState) => {
-    return state.searchedId.id;
-  });
-
-  React.useEffect(() => {
-    if (searchedId !== "") {
-      dispatch(setQuery(`id=${searchedId}`));
-    } else {
-      dispatch(setQuery("page=1"));
-    }
-  }, [searchedId]);
-
-  console.log(searchedId);
+  const [data] = useFetchData();
 
   // pagination control
+  const dispatch = useDispatch();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -47,6 +26,10 @@ function useDataTable() {
   };
 
   // Creating rows data
+
+  const query = useSelector((state: RootState) => {
+    return state.query[0];
+  });
 
   function createData(
     id: number,
