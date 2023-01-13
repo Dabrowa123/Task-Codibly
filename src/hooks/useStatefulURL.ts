@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, searchId, addIdToURL } from "../store";
-import { useSearchParams } from "react-router-dom";
 import useUrlState from "@ahooksjs/use-url-state";
 
 function useStatefulURL() {
@@ -21,7 +20,6 @@ function useStatefulURL() {
   });
   console.log(statefulURL);
   React.useEffect(() => {
-    // window.location.hash = statefulURL;
     setState({ id: statefulURL[0], page: statefulURL[1] });
   }, [statefulURL]);
 
