@@ -24,9 +24,9 @@ function DataTable() {
 
   function defaultLabelDisplayedRows({ from, to }: any) {
     return (
-      <div>
+      <>
         {from}&nbsp;-&nbsp;{to - 1}
-      </div>
+      </>
     );
   }
   return (

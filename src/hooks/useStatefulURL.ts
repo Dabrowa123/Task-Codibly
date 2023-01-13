@@ -7,8 +7,8 @@ function useStatefulURL() {
   const dispatch = useDispatch();
   const id = window.location.hash.slice(1);
   React.useEffect(() => {
-    dispatch(searchId(id));
-    dispatch(addIdToURL(id));
+    // dispatch(searchId(id));
+    // dispatch(addIdToURL(id));
   }, []);
 
   // Insert into adress bar data from redux (filter & pagination info)
@@ -16,14 +16,14 @@ function useStatefulURL() {
     return state.statefulURL[0];
   });
   React.useEffect(() => {
-    window.location.hash = statefulURL;
+    // window.location.hash = statefulURL;
   }, [statefulURL]);
 
   // Pagination
   const pagination = useSelector((state: RootState) => {
     return state.statefulURL[1];
   });
-  console.log(pagination);
+
   return;
 }
 

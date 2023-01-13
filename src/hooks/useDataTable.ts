@@ -4,14 +4,42 @@ import { useSelector, useDispatch } from "react-redux";
 import { addPaginationToURL } from "../store";
 
 function useDataTable() {
-  const dispatch = useDispatch();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  // Query control
 
   const [query, setQuery] = React.useState("page=1");
 
   const { data } = useFetchProductsQuery(query);
-  console.log(data);
+
+  const searchedId = useSelector((state: RootState) => {
+    return state.searchedId[0];
+  });
+
+  React.useEffect(() => {
+    if (searchedId !== "") {
+      setQuery(`id=${searchedId}`);
+    } else {
+      setQuery("page=1");
+    }
+  }, [searchedId]);
+
+  // pagination control
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+    setQuery(`page=${newPage + 1}`);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  // Creating rows data
 
   function createData(
     id: number,
@@ -23,22 +51,15 @@ function useDataTable() {
     return { id, name, year, color, pantone_value };
   }
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    // setPage(data.page);
-    setPage(newPage);
-    setQuery(`page=${newPage + 1}`);
-    console.log(newPage);
-  };
+  let rowsData: any;
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    // setRowsPerPage(+event.target.value);
-    setRowsPerPage(data.per_page);
-    setPage(0);
-  };
+  if (query.match(/id/i)) {
+    rowsData = [data?.data];
+  } else {
+    rowsData = data?.data;
+  }
 
-  let rowsData = data?.data.map(
+  let rows = rowsData.map(
     ({
       id,
       name,
@@ -54,17 +75,7 @@ function useDataTable() {
     }) => createData(id, name, year, color, pantone_value)
   );
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.searchedId[0];
-  });
-
-  let rows;
-
-  if (searchedId === "") {
-    rows = rowsData;
-  } else {
-    rows = rowsData.filter((row: any) => row.id == searchedId);
-  }
+  // stateful URL
 
   // Reflect paggination in URL
   // React.useEffect(() => {
