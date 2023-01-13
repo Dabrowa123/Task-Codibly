@@ -5,14 +5,14 @@ import { useSearchParams } from "react-router-dom";
 import useUrlState from "@ahooksjs/use-url-state";
 
 function useStatefulURL() {
-  const [state, setState] = useUrlState({ id: undefined, page: undefined });
+  const [state, setState] = useUrlState({ id: "", page: undefined });
 
   //   Load data from adress bar (when user will paste a link)
   const dispatch = useDispatch();
   const id = window.location.hash.slice(1);
   React.useEffect(() => {
-    dispatch(searchId(id));
-    dispatch(addIdToURL(id));
+    dispatch(searchId(state?.id));
+    dispatch(addIdToURL(state?.id));
   }, []);
 
   // Insert into adress bar data from redux (filter & pagination info)
@@ -24,11 +24,6 @@ function useStatefulURL() {
     // window.location.hash = statefulURL;
     setState({ id: statefulURL[0], page: statefulURL[1] });
   }, [statefulURL]);
-
-  // Pagination
-  const pagination = useSelector((state: RootState) => {
-    return state.statefulURL[1];
-  });
 
   return;
 }
