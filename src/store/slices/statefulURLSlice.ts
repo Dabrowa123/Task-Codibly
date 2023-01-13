@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const statefulURLSlice = createSlice({
   name: "statefulURL",
-  initialState: [""],
+  initialState: ["", ""],
   reducers: {
     addIdToURL(state, action) {
       state[0] = action.payload;

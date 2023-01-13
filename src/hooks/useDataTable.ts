@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RootState } from "../store";
+import { addPaginationToURL, RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 import { setQuery } from "../store";
 import useFetchData from "./useFetchData";
@@ -24,6 +24,12 @@ function useDataTable() {
     setPage(0);
   };
 
+  // Reflect paggination in URL
+
+  React.useEffect(() => {
+    dispatch(addPaginationToURL(page));
+  }, [page]);
+
   // Creating rows data
 
   const [data] = useFetchData();
@@ -39,13 +45,6 @@ function useDataTable() {
   } else {
     rows = data?.data;
   }
-
-  // stateful URL
-
-  // Reflect paggination in URL
-  // React.useEffect(() => {
-  //   dispatch(addPaginationToURL(page));
-  // }, [page]);
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];
 }
