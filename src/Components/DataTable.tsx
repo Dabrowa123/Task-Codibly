@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModalData, openModal, RootState } from "../store/index";
 
 function DataTable() {
-  const [rows, page, handleChangePage, handleChangeRowsPerPage] =
+  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
