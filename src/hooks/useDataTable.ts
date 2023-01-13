@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useFetchProductsQuery, RootState } from "../store";
+import { RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { addPaginationToURL, setQuery } from "../store";
+import { setQuery } from "../store";
 import useFetchData from "./useFetchData";
 
 function useDataTable() {
@@ -26,7 +26,7 @@ function useDataTable() {
 
   // Creating rows data
 
-  const [data, error] = useFetchData();
+  const [data] = useFetchData();
 
   const query = useSelector((state: RootState) => {
     return state.query[0];
