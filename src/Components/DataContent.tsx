@@ -1,12 +1,19 @@
 import DataTable from "./DataTable";
-import { useFetchProductsQuery } from "../store";
+import { useFetchProductsQuery, RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 
 function DataContent() {
-  const { error, isLoading } = useFetchProductsQuery("page=1");
+  const query = useSelector((state: RootState) => {
+    return state.query[0];
+  });
+  const { error, isLoading } = useFetchProductsQuery(query);
+  console.log(error);
 
   let content;
   if (isLoading) {
     content = <div>Loading...</div>;
+    // } else if (error?.status === 404) {
+    //   content = <div>An error occured during loading products</div>;
   } else if (error) {
     content = <div>An error occured during loading products</div>;
   } else {

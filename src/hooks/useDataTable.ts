@@ -1,12 +1,17 @@
 import * as React from "react";
 import { useFetchProductsQuery, RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { addPaginationToURL } from "../store";
+import { addPaginationToURL, setQuery } from "../store";
 
 function useDataTable() {
   // Query control
+  const dispatch = useDispatch();
 
-  const [query, setQuery] = React.useState("page=1");
+  const query = useSelector((state: RootState) => {
+    return state.query[0];
+  });
+
+  // const [query, setQuery] = React.useState("page=1");
 
   const { data } = useFetchProductsQuery(query);
 
@@ -16,9 +21,9 @@ function useDataTable() {
 
   React.useEffect(() => {
     if (searchedId !== "") {
-      setQuery(`id=${searchedId}`);
+      dispatch(setQuery(`id=${searchedId}`));
     } else {
-      setQuery("page=1");
+      dispatch(setQuery("page=1"));
     }
   }, [searchedId]);
 
@@ -29,7 +34,7 @@ function useDataTable() {
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
-    setQuery(`page=${newPage + 1}`);
+    dispatch(setQuery(`page=${newPage + 1}`));
   };
 
   const handleChangeRowsPerPage = (

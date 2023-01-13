@@ -9,12 +9,16 @@ import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import ProductModal from "./ProductModal";
 import useDataTable from "../hooks/useDataTable";
-import { useDispatch } from "react-redux";
-import { setModalData, openModal } from "../store/index";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalData, openModal, RootState } from "../store/index";
 
 function DataTable() {
   const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useDataTable();
+
+  const searchedId = useSelector((state: RootState) => {
+    return state.searchedId[0];
+  });
 
   const dispatch = useDispatch();
   const showModal = (rowData: any) => {
@@ -68,25 +72,18 @@ function DataTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        component="div"
-        count={12}
-        // count={rows.length}
-        rowsPerPageOptions={[]}
-        rowsPerPage={6}
-        // rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        // labelDisplayedRows={ from, to, count, page }
-        // labelDisplayedRows={ from: 1, to: 5, count: 12, page: 1 }
-        // labelDisplayedRows={(page) =>
-        //   `${page.from}-${page.to === -1 ? page.count : page.to} از ${
-        //     page.count
-        //   }`
-        // }
-        labelDisplayedRows={(page) => defaultLabelDisplayedRows(page)}
-      />
+      {searchedId === "" && (
+        <TablePagination
+          component="div"
+          count={12}
+          rowsPerPageOptions={[]}
+          rowsPerPage={6}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          labelDisplayedRows={(page) => defaultLabelDisplayedRows(page)}
+        />
+      )}
     </>
   );
 }
