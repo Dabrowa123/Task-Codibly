@@ -1,14 +1,32 @@
+import * as React from "react";
 import DataTable from "./DataTable";
-import { useFetchProductsQuery, RootState } from "../store";
+import { useFetchProductsQuery, RootState, setQuery } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 
 function DataContent() {
+  const dispatch = useDispatch();
+
+  const searchedId = useSelector((state: RootState) => {
+    return state.searchedId.id;
+  });
+
+  React.useEffect(() => {
+    if (searchedId !== "") {
+      dispatch(setQuery(`id=${searchedId}`));
+    } else {
+      dispatch(setQuery("page=1"));
+    }
+  }, [searchedId]);
+
   const query = useSelector((state: RootState) => {
     return state.query[0];
   });
-  const { error, isLoading } = useFetchProductsQuery(query);
+  const { data, error, isLoading } = useFetchProductsQuery(query);
+
+  // const [ content, setContent ] = React.useState();
 
   let content;
+  // React.useEffect(() => {
   if (isLoading) {
     content = <div>Loading...</div>;
   } else if (error) {
@@ -27,6 +45,7 @@ function DataContent() {
   } else {
     content = <DataTable />;
   }
+  // }, );
 
   return <>{content}</>;
 }

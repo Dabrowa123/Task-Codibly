@@ -8,7 +8,7 @@ import { RootState, searchId, addIdToURL } from "../store/index";
 export default function SearchForm() {
   const dispatch = useDispatch();
   const searchTerm = useSelector((state: RootState) => {
-    return state.searchedId;
+    return state.searchedId.id;
   });
 
   const handleSearchTermChange = (event: any) => {

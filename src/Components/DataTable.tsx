@@ -15,9 +15,9 @@ import { setModalData, openModal, RootState } from "../store/index";
 function DataTable() {
   const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useDataTable();
-
+  console.log(rows);
   const searchedId = useSelector((state: RootState) => {
-    return state.searchedId[0];
+    return state.searchedId;
   });
 
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ function DataTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      {searchedId === "" && (
+      {searchedId.id === "" && (
         <TablePagination
           component="div"
           count={12}

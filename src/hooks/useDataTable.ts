@@ -16,7 +16,7 @@ function useDataTable() {
   const { data } = useFetchProductsQuery(query);
 
   const searchedId = useSelector((state: RootState) => {
-    return state.searchedId[0];
+    return state.searchedId.id;
   });
 
   React.useEffect(() => {
@@ -26,6 +26,8 @@ function useDataTable() {
       dispatch(setQuery("page=1"));
     }
   }, [searchedId]);
+
+  console.log(searchedId);
 
   // pagination control
 

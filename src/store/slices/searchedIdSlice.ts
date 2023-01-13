@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchedIdSlice = createSlice({
   name: "searchedId",
-  initialState: [""],
+  initialState: { id: "" },
   reducers: {
     searchId(state, action) {
-      state[0] = action.payload;
+      state.id = action.payload;
     },
   },
 });
