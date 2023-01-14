@@ -18,7 +18,7 @@ function useStatefulURL() {
   const statefulURL = useSelector((state: RootState) => {
     return state.statefulURL;
   });
-  console.log(statefulURL);
+
   React.useEffect(() => {
     setState({ id: statefulURL[0], page: statefulURL[1] });
   }, [statefulURL]);

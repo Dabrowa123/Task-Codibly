@@ -13,8 +13,7 @@ import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
-    useDataTable();
+  const [ rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] = useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
     return state.searchedId;
