@@ -1,6 +1,12 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, searchId, addIdToURL, addPaginationToURL } from "../store";
+import {
+  RootState,
+  searchId,
+  addIdToURL,
+  addPaginationToURL,
+  setPage,
+} from "../store";
 import useUrlState from "@ahooksjs/use-url-state";
 
 function useStatefulURL() {
@@ -13,6 +19,7 @@ function useStatefulURL() {
     dispatch(searchId(state?.id));
     dispatch(addIdToURL(state?.id));
     dispatch(addPaginationToURL(state?.page));
+    dispatch(setPage(state?.page));
     // eslint-disable-next-line
   }, []);
 

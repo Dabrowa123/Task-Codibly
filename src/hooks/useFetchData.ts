@@ -22,8 +22,17 @@ function useFetchData() {
     } else {
       dispatch(setQuery("page=1"));
     }
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, [searchedId]);
+
+  const page = useSelector((state: RootState) => {
+    return state.page.page;
+  });
+
+  React.useEffect(() => {
+    dispatch(setQuery(`page=${page + 1}`));
+    // eslint-disable-next-line
+  }, [page]);
 
   return [data, error, isLoading];
 }

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { searchedIdReducer, searchId } from "./slices/searchedIdSlice";
+import { pageReducer, setPage } from "./slices/pageSlice";
 import {
   statefulURLReducer,
   addIdToURL,
@@ -18,6 +19,7 @@ import { productsApi } from "./apis/productsApi";
 const store = configureStore({
   reducer: {
     searchedId: searchedIdReducer,
+    page: pageReducer,
     query: queryReducer,
     statefulURL: statefulURLReducer,
     modalData: modalDataReducer,
@@ -34,6 +36,7 @@ setupListeners(store.dispatch);
 export {
   store,
   searchId,
+  setPage,
   setQuery,
   addIdToURL,
   addPaginationToURL,
