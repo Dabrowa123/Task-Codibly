@@ -13,7 +13,8 @@ import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const [ rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] = useDataTable();
+  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
+    useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
     return state.searchedId;
@@ -47,11 +48,13 @@ function CustomizedTable() {
                 }}
                 onClick={() => showModal(rowData)}
               >
-                <StyledTableCell component="th" scope="row">
-                  {rowData?.id}
+                <StyledTableCell width="15%">{rowData?.id}</StyledTableCell>
+                <StyledTableCell width="60%" align="left">
+                  {rowData?.name}
                 </StyledTableCell>
-                <StyledTableCell align="left">{rowData?.name}</StyledTableCell>
-                <StyledTableCell align="right">{rowData?.year}</StyledTableCell>
+                <StyledTableCell width="25%" align="right">
+                  {rowData?.year}
+                </StyledTableCell>
               </TableRow>
             ))}
           </TableBody>
