@@ -66,7 +66,7 @@ function CustomizedTable() {
           component="div"
           count={12}
           rowsPerPageOptions={[]}
-          rowsPerPage={6}
+          rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}

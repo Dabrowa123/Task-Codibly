@@ -22,6 +22,7 @@ function useFetchData() {
     } else {
       dispatch(setQuery("page=1"));
     }
+    // eslint-disable-next-line 
   }, [searchedId]);
 
   return [data, error, isLoading];

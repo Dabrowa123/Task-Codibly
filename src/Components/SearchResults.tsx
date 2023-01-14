@@ -27,7 +27,7 @@ function SearchResults() {
         );
       }
     }
-  } else {
+  } else if (data) {
     content = <CustomizedTable />;
   }
 

@@ -10,7 +10,7 @@ function useDataTable() {
   const dispatch = useDispatch();
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -28,6 +28,7 @@ function useDataTable() {
 
   React.useEffect(() => {
     dispatch(addPaginationToURL(page));
+    // eslint-disable-next-line
   }, [page]);
 
   // Creating rows data
