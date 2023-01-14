@@ -9,7 +9,7 @@ function SearchResults() {
   let content;
 
   if (isLoading) {
-    content = <div>Loading...</div>;
+    content = <Typography align="center">Loading...</Typography>;
   } else if (error) {
     if ("status" in error) {
       if (error.status === 404) {
