@@ -1,7 +1,7 @@
-import DataTable from "./DataTable";
+import CustomizedTable from "./Table/CustomizedTable";
 import useFetchData from "../hooks/useFetchData";
 
-function DataContent() {
+function SearchResults() {
   const [data, error, isLoading] = useFetchData();
 
   let content;
@@ -22,10 +22,10 @@ function DataContent() {
       }
     }
   } else {
-    content = <DataTable />;
+    content = <CustomizedTable />;
   }
 
   return <>{content}</>;
 }
 
-export default DataContent;
+export default SearchResults;

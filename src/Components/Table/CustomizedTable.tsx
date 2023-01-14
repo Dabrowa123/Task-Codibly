@@ -1,19 +1,18 @@
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import ProductModal from "./ProductModal";
-import useDataTable from "../hooks/useDataTable";
+import ProductModal from "../ProductModal";
+import useDataTable from "../../hooks/useDataTable";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalData, openModal, RootState } from "../store/index";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import { setModalData, openModal, RootState } from "../../store/index";
+import StyledTableCell from "./StyledTableCell";
+import createPaginationLabel from "../../helpers/createPaginationLabel";
 
-function DataTable() {
+function CustomizedTable() {
   const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
     useDataTable();
 
@@ -27,29 +26,10 @@ function DataTable() {
     dispatch(openModal(true));
   };
 
-  function defaultLabelDisplayedRows({ from, to }: any) {
-    return (
-      <>
-        {from}&nbsp;-&nbsp;{to - 1}
-      </>
-    );
-  }
-
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-      fontWeight: 'bold'
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontWeight: 'bold',
-      border: 0
-    },
-  }));
-
   return (
     <>
       <ProductModal />
+
       <TableContainer component={Paper} variant="outlined">
         <Table aria-label="simple table">
           <TableHead>
@@ -66,11 +46,6 @@ function DataTable() {
                 style={{
                   backgroundColor: `${rowData?.color}`,
                 }}
-                sx={{
-                  "&:last-child td, &:last-child th": {
-                    border: 0, 
-                  },
-                }}
                 onClick={() => showModal(rowData)}
               >
                 <StyledTableCell component="th" scope="row">
@@ -83,6 +58,7 @@ function DataTable() {
           </TableBody>
         </Table>
       </TableContainer>
+
       {searchedId.id === "" && (
         <TablePagination
           component="div"
@@ -92,11 +68,11 @@ function DataTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          labelDisplayedRows={(page) => defaultLabelDisplayedRows(page)}
+          labelDisplayedRows={(page) => createPaginationLabel(page)}
         />
       )}
     </>
   );
 }
 
-export default DataTable;
+export default CustomizedTable;
