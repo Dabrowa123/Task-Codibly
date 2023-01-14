@@ -1,6 +1,6 @@
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -10,6 +10,8 @@ import ProductModal from "./ProductModal";
 import useDataTable from "../hooks/useDataTable";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData, openModal, RootState } from "../store/index";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 
 function DataTable() {
   const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
@@ -32,16 +34,29 @@ function DataTable() {
       </>
     );
   }
+
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+      fontWeight: 'bold'
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontWeight: 'bold',
+      border: 0
+    },
+  }));
+
   return (
     <>
-      <ProductModal />;
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <ProductModal />
+      <TableContainer component={Paper} variant="outlined">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Year</TableCell>
+              <StyledTableCell>ID</StyledTableCell>
+              <StyledTableCell align="left">Name</StyledTableCell>
+              <StyledTableCell align="right">Year</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -53,16 +68,16 @@ function DataTable() {
                 }}
                 sx={{
                   "&:last-child td, &:last-child th": {
-                    border: 0,
+                    border: 0, 
                   },
                 }}
                 onClick={() => showModal(rowData)}
               >
-                <TableCell component="th" scope="row">
+                <StyledTableCell component="th" scope="row">
                   {rowData?.id}
-                </TableCell>
-                <TableCell align="right">{rowData?.name}</TableCell>
-                <TableCell align="right">{rowData?.year}</TableCell>
+                </StyledTableCell>
+                <StyledTableCell align="left">{rowData?.name}</StyledTableCell>
+                <StyledTableCell align="right">{rowData?.year}</StyledTableCell>
               </TableRow>
             ))}
           </TableBody>

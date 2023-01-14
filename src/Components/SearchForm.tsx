@@ -17,7 +17,7 @@ export default function SearchForm() {
   };
 
   return (
-    <FormControl>
+    <FormControl sx={{ marginTop: 3 }}>
       <InputLabel htmlFor="component-outlined">Filter by ID</InputLabel>
       <OutlinedInput
         id="component-outlined"
