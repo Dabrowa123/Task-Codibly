@@ -12,8 +12,6 @@ export default function SearchForm() {
   });
 
   const handleSearchTermChange = (event: any) => {
-    // dispatch(searchId(event.target.value));
-    // dispatch(addIdToURL(event.target.value));
     dispatch(setId(event.target.value));
   };
 

@@ -19,8 +19,8 @@ function useFetchData() {
   React.useEffect(() => {
     if (idAndPageParams.id !== "") {
       dispatch(setQuery(`id=${idAndPageParams.id}`));
-    } else if (idAndPageParams.page === 1) {
-      dispatch(setQuery(`page=${2}`));
+    } else if (idAndPageParams.page > 0) {
+      dispatch(setQuery(`page=${idAndPageParams.page + 1}`));
     } else {
       dispatch(setQuery("page=1"));
     }
