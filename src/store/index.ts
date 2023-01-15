@@ -1,19 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { searchedIdReducer, searchId } from "./slices/searchedIdSlice";
-// import { pageReducer, setPage } from "./slices/pageSlice";
-import { idAndPageParamsReducer, setId, setPage } from "./slices/idAndPageParamsSlice";
-// import {
-//   statefulURLReducer,
-//   addIdToURL,
-//   addPaginationToURL,
-// } from "./slices/statefulURLSlice";
-import { modalDataReducer, setModalData } from "./slices/modalDataSlice";
-import { queryReducer, setQuery } from "./slices/querySlice";
 import {
-  isModalVisibleReducer,
+  idAndPageParamsReducer,
+  setId,
+  setPage,
+} from "./slices/idAndPageParamsSlice";
+import {
+  modalReducer,
   openModal,
   closeModal,
-} from "./slices/isModalVisibleSlice";
+  setModalData,
+} from "./slices/modalSlice";
+import { queryReducer, setQuery } from "./slices/querySlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { productsApi } from "./apis/productsApi";
 
@@ -21,8 +18,7 @@ const store = configureStore({
   reducer: {
     idAndPageParams: idAndPageParamsReducer,
     query: queryReducer,
-    modalData: modalDataReducer,
-    isModalVisible: isModalVisibleReducer,
+    modal: modalReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
@@ -34,15 +30,16 @@ setupListeners(store.dispatch);
 
 export {
   store,
-  // searchId,
   setId,
   setPage,
   setQuery,
-  // addIdToURL,
-  // addPaginationToURL,
   setModalData,
   openModal,
-  closeModal,
+  closeModal
 };
 export { useFetchProductsQuery } from "./apis/productsApi";
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+
+

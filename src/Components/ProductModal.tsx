@@ -19,11 +19,11 @@ const style = {
 export default function ProductModal() {
   const { id, name, year, color, pantone_value } = useSelector(
     (state: RootState) => {
-      return state.modalData[0];
+      return state.modal.data;
     }
   );
   const open = useSelector((state: RootState) => {
-    return state.isModalVisible[0];
+    return state.modal.isVisible;
   });
 
   const dispatch = useDispatch();

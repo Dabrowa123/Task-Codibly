@@ -4,7 +4,7 @@ import { RootState, setId, setPage } from "../store";
 import useUrlState from "@ahooksjs/use-url-state";
 
 function useStatefulURL() {
-  const [state, setState] = useUrlState({ id: "", page: undefined });
+  const [state, setState] = useUrlState({ id: "", page: 0 });
 
   //   Load data from adress bar (when user will paste a link)
   const dispatch = useDispatch();
