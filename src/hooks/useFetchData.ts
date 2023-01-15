@@ -12,28 +12,19 @@ function useFetchData() {
 
   const { data, error, isLoading } = useFetchProductsQuery(query);
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.searchedId.id;
-  });
-
-  const statefulURL = useSelector((state: RootState) => {
-    return state.statefulURL[1];
-  });
-
-  const page = useSelector((state: RootState) => {
-    return state.page.page;
+  const idAndPageParams = useSelector((state: RootState) => {
+    return state.idAndPageParams;
   });
 
   React.useEffect(() => {
-    if (searchedId !== "") {
-      dispatch(setQuery(`id=${searchedId}`));
-    } else if (statefulURL === "1" || page === 1) {
+    if (idAndPageParams.id !== "") {
+      dispatch(setQuery(`id=${idAndPageParams.id}`));
+    } else if (idAndPageParams.page === 1) {
       dispatch(setQuery(`page=${2}`));
     } else {
       dispatch(setQuery("page=1"));
     }
-    // eslint-disable-next-line
-  }, [searchedId, statefulURL, page]);
+  }, [idAndPageParams, dispatch]);
 
   return [data, error, isLoading];
 }

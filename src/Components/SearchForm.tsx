@@ -3,17 +3,18 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, searchId, addIdToURL } from "../store/index";
+import { RootState, setId } from "../store/index";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
   const searchTerm = useSelector((state: RootState) => {
-    return state.searchedId.id;
+    return state.idAndPageParams.id;
   });
 
   const handleSearchTermChange = (event: any) => {
-    dispatch(searchId(event.target.value));
-    dispatch(addIdToURL(event.target.value));
+    // dispatch(searchId(event.target.value));
+    // dispatch(addIdToURL(event.target.value));
+    dispatch(setId(event.target.value));
   };
 
   return (

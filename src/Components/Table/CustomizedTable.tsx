@@ -17,7 +17,7 @@ function CustomizedTable() {
     useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
-    return state.searchedId;
+    return state.idAndPageParams.id;
   });
 
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ function CustomizedTable() {
         </Table>
       </TableContainer>
 
-      {searchedId.id === "" && (
+      {searchedId === "" && (
         <TablePagination
           component="div"
           count={12}

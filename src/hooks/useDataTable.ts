@@ -1,7 +1,6 @@
 import * as React from "react";
-import { addPaginationToURL, setPage, RootState } from "../store";
+import { setPage, RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { setQuery } from "../store";
 import useFetchData from "./useFetchData";
 
 function useDataTable() {
@@ -10,31 +9,21 @@ function useDataTable() {
   const dispatch = useDispatch();
 
   const page = useSelector((state: RootState) => {
-    return state.page.page;
+    return state.idAndPageParams.page;
   });
-  // const [page, setPage] = React.useState(0);
+
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
   const handleChangePage = (event: unknown, newPage: number) => {
-    // setPage(newPage);
     dispatch(setPage(newPage));
-    dispatch(setQuery(`page=${newPage + 1}`));
   };
 
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setRowsPerPage(+event.target.value);
-    // setPage(0);
     dispatch(setPage(0));
   };
-
-  // Reflect paggination in URL
-
-  React.useEffect(() => {
-    dispatch(addPaginationToURL(page));
-    // eslint-disable-next-line
-  }, [page]);
 
   // Creating rows data
 
