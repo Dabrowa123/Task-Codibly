@@ -16,23 +16,24 @@ function useFetchData() {
     return state.searchedId.id;
   });
 
-  React.useEffect(() => {
-    if (searchedId !== "") {
-      dispatch(setQuery(`id=${searchedId}`));
-    } else {
-      dispatch(setQuery("page=1"));
-    }
-    // eslint-disable-next-line
-  }, [searchedId]);
+  const statefulURL = useSelector((state: RootState) => {
+    return state.statefulURL[1];
+  });
 
   const page = useSelector((state: RootState) => {
     return state.page.page;
   });
 
   React.useEffect(() => {
-    dispatch(setQuery(`page=${page + 1}`));
+    if (searchedId !== "") {
+      dispatch(setQuery(`id=${searchedId}`));
+    } else if (statefulURL === "1" || page === 1) {
+      dispatch(setQuery(`page=${2}`));
+    } else {
+      dispatch(setQuery("page=1"));
+    }
     // eslint-disable-next-line
-  }, [page]);
+  }, [searchedId, statefulURL, page]);
 
   return [data, error, isLoading];
 }
