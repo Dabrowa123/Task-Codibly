@@ -35,6 +35,7 @@ function useDataTable() {
 
   let rows: any;
 
+  console.log(typeof data);
   if (query.match(/id/i)) {
     rows = [data?.data] || [];
   } else {

@@ -1,6 +1,7 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, setId } from "../store/index";
@@ -16,8 +17,8 @@ export default function SearchForm() {
     return state.idAndPageParams.id;
   });
 
-  const handleSearchTermChange = (event: any) => {
-    dispatch(setId(event.target.value));
+  const handleSearchNumbersOnly = (event: any) => {
+    dispatch(setId(event.target.value.replace(/\D/g, "")));
   };
 
   return (
@@ -27,10 +28,10 @@ export default function SearchForm() {
         <OutlinedInput
           id="component-outlined"
           label="Filter by ID"
-          type="number"
+          type="text"
           endAdornment={<SearchIcon sx={{ marginLeft: 2 }} />}
           value={searchTerm}
-          onChange={handleSearchTermChange}
+          onChange={handleSearchNumbersOnly}
         />
       </FormControl>
       {isFetching && <LinearProgress />}

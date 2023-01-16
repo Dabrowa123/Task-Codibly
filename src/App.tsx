@@ -10,16 +10,18 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="sm">
-        <Fade>
-          <Paper elevation={7}>
-            <Box sx={{ margin: 2, padding: 5, height: 520 }}>
-              <Stack spacing={3}>
-                <SearchForm />
-                <SearchResults />
-              </Stack>
-            </Box>
-          </Paper>
-        </Fade>
+        <Stack sx={{ height: "100vh", justifyContent: "center" }}>
+          <Fade>
+            <Paper elevation={20}>
+              <Box sx={{ margin: 2, padding: 5, height: 520 }}>
+                <Stack spacing={3}>
+                  <SearchForm />
+                  <SearchResults />
+                </Stack>
+              </Box>
+            </Paper>
+          </Fade>
+        </Stack>
       </Container>
     </div>
   );
