@@ -6,6 +6,7 @@ import { RootState } from "../store";
 import Fade from "@mui/material/Fade";
 
 function ErrorMesages() {
+  // eslint-disable-next-line
   const [data, error] = useFetchData();
 
   const searchedId = useSelector((state: RootState) => {

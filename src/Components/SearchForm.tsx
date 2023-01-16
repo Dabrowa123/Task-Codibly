@@ -10,6 +10,7 @@ import Stack from "@mui/material/Stack";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const [data, isError, isFetching] = useFetchData();
   const searchTerm = useSelector((state: RootState) => {
     return state.idAndPageParams.id;

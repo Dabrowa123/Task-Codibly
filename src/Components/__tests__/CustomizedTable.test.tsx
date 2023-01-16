@@ -5,7 +5,7 @@ import { renderWithProviders } from "../../utils/test-utils";
 describe("CustomizedTable Component", () => {
   it("should change pagination label to 7 - 11 of 12 after first click on pagination button", () => {
     renderWithProviders(<CustomizedTable />);
-    const paginationLabel = screen.getByRole("pagination");
+    const paginationLabel = screen.getByTestId("pagination");
     const nextPageButton = screen.getByTitle(
       "Go to next page"
     ) as unknown as Element;
