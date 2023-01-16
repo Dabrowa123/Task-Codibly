@@ -1,7 +1,7 @@
 import App from "../../App";
 import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "../../utils/test-utils";
-import "../__mocks__/intersectionObserverMock";
+import "../../utils/__mocks__/intersectionObserverMock";
 
 describe("ErrorMessages Component", () => {
   it("error status should be visible when no id found", async () => {

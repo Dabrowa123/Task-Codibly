@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import StatefulURL from "./hooks/StatefulURL";
+import StatefulURL from "./Components/StatefulURL";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

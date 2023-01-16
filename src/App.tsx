@@ -4,17 +4,15 @@ import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import SearchResults from "./Components/SearchResults";
 import SearchForm from "./Components/SearchForm";
-import StatefulURL from "./hooks/StatefulURL";
 import { Fade } from "react-awesome-reveal";
 
 function App() {
   return (
     <div className="App">
-      {/* <StatefulURL />; */}
       <Container maxWidth="sm">
         <Fade>
           <Paper elevation={7}>
-            <Box sx={{ margin: 5, padding: 5, height: 530 }}>
+            <Box sx={{ margin: 2, padding: 5, height: 520 }}>
               <Stack spacing={3}>
                 <SearchForm />
                 <SearchResults />
