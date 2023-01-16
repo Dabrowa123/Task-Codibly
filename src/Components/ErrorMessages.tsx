@@ -4,9 +4,10 @@ import Box from "@mui/material/Box";
 import useFetchData from "../hooks/useFetchData";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import Fade from "@mui/material/Fade";
 
 function ErrorMesages() {
-  const [data, error, isLoading] = useFetchData();
+  const [data, error] = useFetchData();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
@@ -16,9 +17,8 @@ function ErrorMesages() {
     <Stack
       justifyContent="center"
       alignItems="center"
-      sx={{ padding: 5, height: 270 }}
+      sx={{ marginTop: 3, padding: 5, height: 270 }}
     >
-      <br />
       <Typography align="center" variant="subtitle1" gutterBottom>
         {error.status === 404 && (
           <>

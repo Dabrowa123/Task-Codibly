@@ -28,9 +28,11 @@ function CustomizedTable() {
 
   return (
     <>
-      <ProductModal />
-
-      <TableContainer component={Paper} variant="outlined">
+      <TableContainer
+        component={Paper}
+        variant="outlined"
+        sx={{ marginTop: 0 }}
+      >
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -74,6 +76,8 @@ function CustomizedTable() {
           labelDisplayedRows={(page) => createPaginationLabel(page)}
         />
       )}
+
+      <ProductModal />
     </>
   );
 }

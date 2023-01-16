@@ -10,7 +10,7 @@ function useFetchData() {
     return state.query[0];
   });
 
-  const { data, error, isFetching, isLoading } = useFetchProductsQuery(query);
+  const { data, error, isFetching, isLoading, isError, isSuccess } = useFetchProductsQuery(query);
 
   const idAndPageParams = useSelector((state: RootState) => {
     return state.idAndPageParams;
@@ -26,7 +26,7 @@ function useFetchData() {
     }
   }, [idAndPageParams, dispatch]);
 
-  return [data, error, isFetching, isLoading];
+  return [data, error, isFetching, isLoading, isError, isSuccess ];
 }
 
 export default useFetchData;
