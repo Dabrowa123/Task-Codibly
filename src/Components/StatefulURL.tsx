@@ -24,7 +24,7 @@ function useStatefulURL() {
     setState({ id: idAndPageParams?.id, page: idAndPageParams?.page });
   }, [idAndPageParams, setState]);
 
-  return;
+  return <></>;
 }
 
 export default useStatefulURL;

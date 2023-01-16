@@ -3,6 +3,7 @@
 The App has been created in React to accomplish the technical internship task.
 
 **Technologies used:**
+
 - Typescript as a script language
 - Redux Toolkit for state management
 - Redux Toolkit Queries to fetch data
@@ -11,6 +12,8 @@ The App has been created in React to accomplish the technical internship task.
 - React Testing Library and Jest for testing
 - ahooks & react router to establish stateful URL
 - react-awesome-reveal for trasitions
+
+Application is fully responsive and works on all devces.
 
 Please, find the site live on https://internship-task001.netlify.app
 
@@ -26,19 +29,19 @@ Extra requirement (optional):
 
 Please reflect pagination and filtering in the address URL, so users can copy and share the URL with each other.
 
-API endpoint
-
+API endpoint:
 https://reqres.in/api/products
-Requirements
 
+Requirements:
 React
 Typescript
 git
 github/gitlab/bitbucket
-Nice to have
 
+Nice to have:
 Unit tests
 Redux/Context API or other state management library
+
 Remarks:
 
 - filtering and pagination should be performed within the API, not on the frontend side

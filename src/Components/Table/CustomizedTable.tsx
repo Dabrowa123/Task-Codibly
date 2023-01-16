@@ -44,11 +44,12 @@ function CustomizedTable() {
                 key={rowData?.name}
                 style={{
                   backgroundColor: `${rowData?.color}`,
+                  cursor: "pointer",
                 }}
                 onClick={() => showModal(rowData)}
               >
-                <StyledTableCell width="15%">{rowData?.id}</StyledTableCell>
-                <StyledTableCell width="60%" align="left">
+                <StyledTableCell width="5%">{rowData?.id}</StyledTableCell>
+                <StyledTableCell width="70%" align="left">
                   {rowData?.name}
                 </StyledTableCell>
                 <StyledTableCell width="25%" align="right">
