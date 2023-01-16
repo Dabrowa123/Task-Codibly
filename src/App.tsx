@@ -16,12 +16,7 @@ function App() {
         <Fade>
           <Paper elevation={7}>
             <Box sx={{ margin: 5, padding: 5 }}>
-              <Stack
-                spacing={3}
-                sx={{
-                  bgcolor: "",
-                }}
-              >
+              <Stack spacing={3}>
                 <SearchForm />
                 <SearchResults />
               </Stack>
