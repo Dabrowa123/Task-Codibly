@@ -1,6 +1,6 @@
 **Internship Technical Task**
 
-The App and repository have been created in React to accomplish the technical internship task.
+The App has been created in React to accomplish the technical internship task.
 
 **Technologies used:**
 - Typescript as a script language
@@ -11,8 +11,6 @@ The App and repository have been created in React to accomplish the technical in
 - React Testing Library and Jest for testing
 - ahooks & react router to establish stateful URL
 - react-awesome-reveal for trasitions
-
-Please, find the description of the task below
 
 **Task description:**
 

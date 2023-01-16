@@ -28,13 +28,6 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-// export function setupStore(preloadedState?: PreloadedState<RootState>) {
-//   return configureStore({
-//     reducer: rootReducer,
-//     preloadedState
-//   })
-// }
-
 export {
   store,
   setId,
@@ -46,8 +39,7 @@ export {
 };
 export { useFetchProductsQuery } from "./apis/productsApi";
 export type RootState = ReturnType<typeof store.getState>;
-// export type AppStore = ReturnType<typeof setupStore>;
-// export type AppDispatch = AppStore['dispatch'];
+
 
 
 
