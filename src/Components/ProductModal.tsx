@@ -32,6 +32,7 @@ export default function ProductModal() {
   return (
     <div>
       <Modal
+        data-testid="modal"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

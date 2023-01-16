@@ -36,9 +36,9 @@ function useDataTable() {
   let rows: any;
 
   if (query.match(/id/i)) {
-    rows = [data?.data];
+    rows = [data?.data] || [];
   } else {
-    rows = data?.data;
+    rows = data?.data || [];
   }
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];

@@ -42,6 +42,7 @@ function CustomizedTable() {
           <TableBody>
             {rows.slice(0, 5).map((rowData: any) => (
               <TableRow
+                data-testid="tableRow"
                 key={rowData?.name}
                 style={{
                   backgroundColor: `${rowData?.color}`,
