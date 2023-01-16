@@ -4,15 +4,17 @@ import useFetchData from "../hooks/useFetchData";
 import Typography from "@mui/material/Typography";
 
 function SearchResults() {
-  const [data, error, isLoading] = useFetchData();
+  const [data, error, isFetching, isLoading] = useFetchData();
 
   return (
     <>
-      {isLoading && <Typography align="center">Loading...</Typography>}
+      {(isLoading || isFetching) && (
+        <Typography align="center">Loading...</Typography>
+      )}
 
       {error && <ErrorMesages />}
 
-      {data && !error && <CustomizedTable />}
+      {data && !error && !isFetching && <CustomizedTable />}
     </>
   );
 }
