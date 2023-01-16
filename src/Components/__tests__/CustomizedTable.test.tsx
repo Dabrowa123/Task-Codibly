@@ -3,14 +3,23 @@ import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "../../utils/test-utils";
 
 describe("CustomizedTable Component", () => {
-  it("modal should be visible after clicking on a table row", () => {
+  it("should change pagination label to 7 - 11 of 12 after first click on pagination button", () => {
     renderWithProviders(<CustomizedTable />);
     const paginationLabel = screen.getByRole("pagination");
     const nextPageButton = screen.getByTitle(
       "Go to next page"
     ) as unknown as Element;
-    screen.debug();
     fireEvent.click(nextPageButton);
     expect(paginationLabel).toHaveTextContent("7 - 11 of 12");
+  });
+
+  it("should open modal after clicking a row", async () => {
+    renderWithProviders(<CustomizedTable />);
+    expect(await screen.findByText("1")).toBeInTheDocument();
+
+    const tableRow = screen.getByText("1") as unknown as Element;
+    fireEvent.click(tableRow);
+    const modal = screen.getByTestId("modal") as unknown as Element;
+    expect(modal).toBeVisible();
   });
 });
