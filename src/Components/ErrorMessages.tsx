@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import useFetchData from "../hooks/useFetchData";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -12,16 +13,26 @@ function ErrorMesages() {
   });
 
   return (
-    <Stack>
+    <Stack
+      justifyContent="center"
+      alignItems="center"
+      sx={{ padding: 5, height: 270 }}
+    >
       <br />
       <Typography align="center" variant="subtitle1" gutterBottom>
         {error.status === 404 && (
-          <>There is no prodct with ID {searchedId} in the database</>
+          <>
+            There is no prodct with ID
+            <Typography variant="h6">{searchedId}</Typography>
+            in the database
+          </>
         )}
         {error.status !== 404 && <>An error has occurred</>}
       </Typography>
       <br />
-      <Typography align="center" variant="subtitle2" gutterBottom>Status: {error.status}</Typography>
+      <Typography align="center" variant="subtitle2" gutterBottom>
+        Status: {error.status}
+      </Typography>
     </Stack>
   );
 }

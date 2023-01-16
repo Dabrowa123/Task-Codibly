@@ -15,7 +15,7 @@ function App() {
       <Container maxWidth="sm">
         <Fade>
           <Paper elevation={7}>
-            <Box sx={{ margin: 5, padding: 5 }}>
+            <Box sx={{ margin: 5, padding: 5, height: 510 }}>
               <Stack spacing={3}>
                 <SearchForm />
                 <SearchResults />

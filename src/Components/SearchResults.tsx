@@ -2,6 +2,9 @@ import CustomizedTable from "./Table/CustomizedTable";
 import ErrorMesages from "./ErrorMessages";
 import useFetchData from "../hooks/useFetchData";
 import Typography from "@mui/material/Typography";
+import LinearProgress from "@mui/material/LinearProgress";
+import Box from "@mui/material/Box";
+import { Fade } from "react-awesome-reveal";
 
 function SearchResults() {
   const [data, error, isFetching, isLoading] = useFetchData();
@@ -9,7 +12,9 @@ function SearchResults() {
   return (
     <>
       {(isLoading || isFetching) && (
-        <Typography align="center">Loading...</Typography>
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
       )}
 
       {error && <ErrorMesages />}
