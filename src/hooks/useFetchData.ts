@@ -10,21 +10,23 @@ function useFetchData() {
     return state.query[0];
   });
 
-  const { data, error, isLoading } = useFetchProductsQuery(query);
+  const { data, error, isFetching, isLoading, isError, isSuccess } = useFetchProductsQuery(query);
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.searchedId.id;
+  const idAndPageParams = useSelector((state: RootState) => {
+    return state.idAndPageParams;
   });
 
   React.useEffect(() => {
-    if (searchedId !== "") {
-      dispatch(setQuery(`id=${searchedId}`));
+    if (idAndPageParams.id !== "") {
+      dispatch(setQuery(`id=${idAndPageParams.id}`));
+    } else if (idAndPageParams.page > 0) {
+      dispatch(setQuery(`page=${idAndPageParams.page + 1}`));
     } else {
       dispatch(setQuery("page=1"));
     }
-  }, [searchedId]);
+  }, [idAndPageParams, dispatch]);
 
-  return [data, error, isLoading];
+  return [data, error, isFetching, isLoading, isError, isSuccess ];
 }
 
 export default useFetchData;

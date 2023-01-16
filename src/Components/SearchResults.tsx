@@ -1,31 +1,17 @@
 import CustomizedTable from "./Table/CustomizedTable";
+import ErrorMesages from "./ErrorMessages";
 import useFetchData from "../hooks/useFetchData";
 
 function SearchResults() {
-  const [data, error, isLoading] = useFetchData();
+  const [isSuccess, isError, isFetching] = useFetchData();
 
-  let content;
+  return (
+    <>
+      {isError && <ErrorMesages />}
 
-  if (isLoading) {
-    content = <div>Loading...</div>;
-  } else if (error) {
-    if ("status" in error) {
-      if (error.status === 404) {
-        content = <div>There is no prodct matching requested ID</div>;
-      } else {
-        content = (
-          <div>
-            <div>An error has occurred</div>
-            <div>Status: {error.status}</div>
-          </div>
-        );
-      }
-    }
-  } else {
-    content = <CustomizedTable />;
-  }
-
-  return <>{content}</>;
+      {isSuccess && !isError && !isFetching && <CustomizedTable />}
+    </>
+  );
 }
 
 export default SearchResults;

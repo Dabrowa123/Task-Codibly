@@ -13,10 +13,11 @@ import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const [ rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] = useDataTable();
+  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
+    useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
-    return state.searchedId;
+    return state.idAndPageParams.id;
   });
 
   const dispatch = useDispatch();
@@ -27,8 +28,6 @@ function CustomizedTable() {
 
   return (
     <>
-      <ProductModal />
-
       <TableContainer component={Paper} variant="outlined">
         <Table aria-label="simple table">
           <TableHead>
@@ -41,35 +40,40 @@ function CustomizedTable() {
           <TableBody>
             {rows.slice(0, 5).map((rowData: any) => (
               <TableRow
+                data-testid="tableRow"
                 key={rowData?.name}
                 style={{
                   backgroundColor: `${rowData?.color}`,
                 }}
                 onClick={() => showModal(rowData)}
               >
-                <StyledTableCell component="th" scope="row">
-                  {rowData?.id}
+                <StyledTableCell width="15%">{rowData?.id}</StyledTableCell>
+                <StyledTableCell width="60%" align="left">
+                  {rowData?.name}
                 </StyledTableCell>
-                <StyledTableCell align="left">{rowData?.name}</StyledTableCell>
-                <StyledTableCell align="right">{rowData?.year}</StyledTableCell>
+                <StyledTableCell width="25%" align="right">
+                  {rowData?.year}
+                </StyledTableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-      {searchedId.id === "" && (
+      {searchedId === "" && (
         <TablePagination
           component="div"
           count={12}
           rowsPerPageOptions={[]}
-          rowsPerPage={6}
+          rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           labelDisplayedRows={(page) => createPaginationLabel(page)}
         />
       )}
+
+      <ProductModal />
     </>
   );
 }
