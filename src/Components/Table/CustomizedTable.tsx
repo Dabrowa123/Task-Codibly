@@ -28,11 +28,7 @@ function CustomizedTable() {
 
   return (
     <>
-      <TableContainer
-        component={Paper}
-        variant="outlined"
-        sx={{ marginTop: 0 }}
-      >
+      <TableContainer component={Paper} variant="outlined">
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
