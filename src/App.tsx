@@ -4,13 +4,13 @@ import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import SearchResults from "./Components/SearchResults";
 import SearchForm from "./Components/SearchForm";
-import useStatefulURL from "./hooks/useStatefulURL";
+import StatefulURL from "./hooks/StatefulURL";
 import { Fade } from "react-awesome-reveal";
 
 function App() {
-  useStatefulURL();
   return (
     <div className="App">
+      {/* <StatefulURL />; */}
       <Container maxWidth="sm">
         <Fade>
           <Paper elevation={7}>
