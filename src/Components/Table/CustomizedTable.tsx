@@ -44,6 +44,7 @@ function CustomizedTable() {
                 key={rowData?.name}
                 style={{
                   backgroundColor: `${rowData?.color}`,
+                  cursor: "pointer"
                 }}
                 onClick={() => showModal(rowData)}
               >
