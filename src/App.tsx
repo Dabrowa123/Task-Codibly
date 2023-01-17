@@ -13,7 +13,9 @@ function App() {
         <Stack sx={{ height: "100vh", justifyContent: "center" }}>
           <Fade>
             <Paper elevation={20}>
-              <Box sx={{ margin: 2, padding: 5, height: 520 }}>
+              <Box
+                sx={{ margin: 2, padding: 5, paddingBottom: 2, minHeight: 555 }}
+              >
                 <Stack spacing={3}>
                   <SearchForm />
                   <SearchResults />
