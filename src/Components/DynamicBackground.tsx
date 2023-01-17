@@ -1,15 +1,11 @@
 import useDataTable from "../hooks/useDataTable";
 import useFetchData from "../hooks/useFetchData";
 import * as React from "react";
-import { CssBaseline, GlobalStyles } from "@mui/material";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { GlobalStyles } from "@mui/material";
 
 function DynamicBacground() {
-  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
-    useDataTable();
-
-  const [data] = useFetchData();
+  const [rows] = useDataTable();
+  const [isSuccess] = useFetchData();
 
   const colors = rows.slice(0, 5).map((rows: any) => rows?.color) || [];
 
@@ -30,7 +26,7 @@ function DynamicBacground() {
         size: "600px 600px",
       });
     }
-  }, [data]);
+  }, [isSuccess]);
 
   return (
     <GlobalStyles
@@ -38,6 +34,7 @@ function DynamicBacground() {
         body: {
           backgroundImage: strippedBackground.pattern,
           backgroundSize: strippedBackground.size,
+          fontFamily: "Montserrat",
         },
       }}
     />
