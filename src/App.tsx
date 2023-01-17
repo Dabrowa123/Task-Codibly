@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="sm">
-        <Stack sx={{ height: "100vh", justifyContent: "center" }}>
+        <Stack sx={{ height: "100%", justifyContent: "center" }}>
           <Fade>
             <Paper elevation={20}>
               <Box

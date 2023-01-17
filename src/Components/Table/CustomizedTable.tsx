@@ -42,9 +42,12 @@ function CustomizedTable() {
               <TableRow
                 data-testid="tableRow"
                 key={rowData?.name}
-                style={{
+                sx={{
                   backgroundColor: `${rowData?.color}`,
                   cursor: "pointer",
+                  "&:hover": {
+                    filter: "brightness(110%)",
+                  },
                 }}
                 onClick={() => showModal(rowData)}
               >
