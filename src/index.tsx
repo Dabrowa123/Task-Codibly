@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import StatefulURL from "./Components/StatefulURL";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./theme/theme";
+import DynamicBacground from "./Components/DynamicBackground";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,7 +17,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <DynamicBacground />
+        <App />
+      </ThemeProvider>
+      
       <Router>
         <Routes>
           <Route path="*" element={<StatefulURL />}></Route>

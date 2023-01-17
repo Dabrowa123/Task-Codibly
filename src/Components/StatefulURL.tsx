@@ -22,7 +22,7 @@ function useStatefulURL() {
 
   React.useEffect(() => {
     setState({ id: idAndPageParams?.id, page: idAndPageParams?.page });
-  }, [idAndPageParams, setState]);
+  }, [idAndPageParams]);
 
   return <></>;
 }
