@@ -35,7 +35,6 @@ function DynamicBacground() {
         body: {
           backgroundImage: strippedBackground.pattern,
           backgroundSize: strippedBackground.size,
-          fontFamily: "Montserrat",
         },
       }}
     />
