@@ -8,7 +8,7 @@ function useStatefulURL() {
 
   //   Load data from adress bar (when user will paste a link)
   const dispatch = useDispatch();
-
+  console.log(state);
   React.useEffect(() => {
     dispatch(setId(state?.id));
     dispatch(setPage(+state?.page));
@@ -22,7 +22,7 @@ function useStatefulURL() {
 
   React.useEffect(() => {
     setState({ id: idAndPageParams?.id, page: idAndPageParams?.page });
-  }, [idAndPageParams, setState]);
+  }, [idAndPageParams]);
 
   return <></>;
 }

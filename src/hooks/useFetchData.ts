@@ -9,9 +9,10 @@ function useFetchData() {
   const query = useSelector((state: RootState) => {
     return state.query[0];
   });
-
-  const { data, error, isFetching, isLoading, isError, isSuccess } = useFetchProductsQuery(query);
-
+  console.log(query);
+  const { data, error, isFetching, isLoading, isError, isSuccess } =
+    useFetchProductsQuery(query);
+  console.log(data, error, isFetching, isLoading, isError, isSuccess);
   const idAndPageParams = useSelector((state: RootState) => {
     return state.idAndPageParams;
   });
@@ -24,9 +25,9 @@ function useFetchData() {
     } else {
       dispatch(setQuery("page=1"));
     }
-  }, [idAndPageParams, dispatch]);
+  }, [idAndPageParams]);
 
-  return [data, error, isFetching, isLoading, isError, isSuccess ];
+  return [data, error, isFetching, isLoading, isError, isSuccess];
 }
 
 export default useFetchData;
