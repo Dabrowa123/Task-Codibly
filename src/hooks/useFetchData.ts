@@ -25,7 +25,7 @@ function useFetchData() {
     } else {
       dispatch(setQuery("page=1"));
     }
-  }, [idAndPageParams]);
+  }, [idAndPageParams, dispatch]);
 
   return [data, error, isFetching, isLoading, isError, isSuccess];
 }
