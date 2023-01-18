@@ -9,7 +9,7 @@ const productsApi = createApi({
     return {
       fetchProducts: builder.query<any, any>({
         query: (idAndPageParams) => {
-          console.log(idAndPageParams);
+          // set query
           if (idAndPageParams.id !== "") {
             return {
               url: `/products?id=${idAndPageParams.id}`,
@@ -28,6 +28,7 @@ const productsApi = createApi({
           }
         },
         transformResponse: (response: any, meta, args) => {
+          // response data normalization
           if (args.id !== "") {
             return [response.data];
           } else {

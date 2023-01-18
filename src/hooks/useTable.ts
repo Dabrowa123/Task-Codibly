@@ -1,12 +1,17 @@
 import * as React from "react";
-import { setPage, RootState } from "../store";
+import {
+  setPage,
+  RootState,
+  useFetchProductsQuery,
+  setModalData,
+  openModal,
+} from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import useFetchData from "./useFetchData";
 
 function useDataTable() {
-  // pagination control
-
   const dispatch = useDispatch();
+  
+  // pagination control
 
   const page = useSelector((state: RootState) => {
     return state.idAndPageParams.page;
@@ -27,11 +32,27 @@ function useDataTable() {
 
   // Creating rows data
 
-  const [data] = useFetchData();
+  const { data } = useFetchProductsQuery(
+    useSelector((state: RootState) => state.idAndPageParams)
+  );
 
   let rows = data || [];
 
-  return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];
+  // Show modal
+
+  const handleShowModal = (rowData: any) => {
+    dispatch(setModalData(rowData));
+    dispatch(openModal(true));
+  };
+
+  return [
+    rows,
+    page,
+    rowsPerPage,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    handleShowModal,
+  ];
 }
 
 export default useDataTable;

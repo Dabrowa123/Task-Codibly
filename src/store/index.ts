@@ -10,14 +10,12 @@ import {
   closeModal,
   setModalData,
 } from "./slices/modalSlice";
-import { queryReducer, setQuery } from "./slices/querySlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { productsApi } from "./apis/productsApi";
 
 const store = configureStore({
   reducer: {
     idAndPageParams: idAndPageParamsReducer,
-    query: queryReducer,
     modal: modalReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
@@ -32,7 +30,6 @@ export {
   store,
   setId,
   setPage,
-  setQuery,
   setModalData,
   openModal,
   closeModal

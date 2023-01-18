@@ -1,13 +1,16 @@
-import useDataTable from "../hooks/useDataTable";
-import useFetchData from "../hooks/useFetchData";
 import * as React from "react";
 import { GlobalStyles } from "@mui/material";
+import { useFetchProductsQuery, RootState } from "../store";
+import { useSelector } from "react-redux";
 
 function DynamicBacground() {
-  const [rows] = useDataTable();
-  const [Data] = useFetchData();
+  const { data } = useFetchProductsQuery(
+    useSelector((state: RootState) => state.idAndPageParams)
+  );
 
-  const colors = rows.slice(0, 5).map((rows: any) => rows?.color) || [];
+  const products = data || [];
+
+  const colors = products.slice(0, 5).map((rows: any) => rows?.color);
 
   const [strippedBackground, setStrippedBackground] = React.useState({
     pattern: "",
@@ -26,8 +29,7 @@ function DynamicBacground() {
         size: "600px 600px",
       });
     }
-    // eslint-disable-next-line
-  }, [Data]);
+  }, [data]);
 
   return (
     <GlobalStyles
