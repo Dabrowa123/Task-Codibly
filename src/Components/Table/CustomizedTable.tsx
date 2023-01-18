@@ -6,25 +6,25 @@ import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import ProductModal from "../ProductModal";
-import useDataTable from "../../hooks/useDataTable";
-import { useDispatch, useSelector } from "react-redux";
-import { setModalData, openModal, RootState } from "../../store/index";
+import useDataTable from "../../hooks/useTable";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/index";
 import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
-    useDataTable();
+  const [
+    rows,
+    page,
+    rowsPerPage,
+    handleChangePage,
+    handleChangeRowsPerPage,
+    handleShowModal,
+  ] = useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
   });
-
-  const dispatch = useDispatch();
-  const showModal = (rowData: any) => {
-    dispatch(setModalData(rowData));
-    dispatch(openModal(true));
-  };
 
   return (
     <>
@@ -49,7 +49,7 @@ function CustomizedTable() {
                     filter: "brightness(110%)",
                   },
                 }}
-                onClick={() => showModal(rowData)}
+                onClick={() => handleShowModal(rowData)}
               >
                 <StyledTableCell width="5%">{rowData?.id}</StyledTableCell>
                 <StyledTableCell width="70%" align="left">

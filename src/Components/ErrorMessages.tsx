@@ -1,12 +1,13 @@
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import useFetchData from "../hooks/useFetchData";
+import { useFetchProductsQuery, RootState } from "../store";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import Fade from "@mui/material/Fade";
 
 function ErrorMesages() {
-  const [, error] = useFetchData();
+  const { error } = useFetchProductsQuery(
+    useSelector((state: RootState) => state.idAndPageParams)
+  );
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
@@ -15,12 +16,12 @@ function ErrorMesages() {
   return (
     <Fade>
       <>
+      {error && "status" in error && (
         <Stack
           justifyContent="center"
           alignItems="center"
           sx={{ marginTop: 3, padding: 5, height: 270 }}
         >
-
           <Typography align="center" variant="subtitle1" gutterBottom>
             {error.status === 404 && (
               <>
@@ -29,7 +30,7 @@ function ErrorMesages() {
                 in the database
               </>
             )}
-            
+
             {error.status !== 404 && <>An error has occurred</>}
           </Typography>
 
@@ -38,8 +39,7 @@ function ErrorMesages() {
           <Typography align="center" variant="subtitle2" gutterBottom>
             Status: {error.status}
           </Typography>
-
-        </Stack>
+        </Stack>)}
       </>
     </Fade>
   );
