@@ -10,8 +10,7 @@ import Stack from "@mui/material/Stack";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
-  // eslint-disable-next-line
-  const [data, isError, isFetching] = useFetchData();
+  const [, , isFetching] = useFetchData();
   const searchTerm = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
   });
@@ -23,7 +22,9 @@ export default function SearchForm() {
   return (
     <Stack sx={{ height: 110 }}>
       <FormControl sx={{ marginTop: 3, paddingBottom: 5, height: 40 }}>
+
         <InputLabel htmlFor="component-outlined">Filter by ID</InputLabel>
+
         <OutlinedInput
           id="component-outlined"
           label="Filter by ID"
@@ -33,6 +34,7 @@ export default function SearchForm() {
           onChange={handleSearchNumbersOnly}
         />
       </FormControl>
+
       {isFetching && <LinearProgress />}
     </Stack>
   );

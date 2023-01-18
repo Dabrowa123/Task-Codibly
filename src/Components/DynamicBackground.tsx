@@ -5,7 +5,7 @@ import { GlobalStyles } from "@mui/material";
 
 function DynamicBacground() {
   const [rows] = useDataTable();
-  const [isSuccess] = useFetchData();
+  const [Data] = useFetchData();
 
   const colors = rows.slice(0, 5).map((rows: any) => rows?.color) || [];
 
@@ -27,7 +27,7 @@ function DynamicBacground() {
       });
     }
     // eslint-disable-next-line
-  }, [isSuccess]);
+  }, [Data]);
 
   return (
     <GlobalStyles
