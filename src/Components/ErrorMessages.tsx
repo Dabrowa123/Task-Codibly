@@ -6,8 +6,7 @@ import { RootState } from "../store";
 import Fade from "@mui/material/Fade";
 
 function ErrorMesages() {
-  // eslint-disable-next-line
-  const [data, error] = useFetchData();
+  const [, error] = useFetchData();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
@@ -21,6 +20,7 @@ function ErrorMesages() {
           alignItems="center"
           sx={{ marginTop: 3, padding: 5, height: 270 }}
         >
+
           <Typography align="center" variant="subtitle1" gutterBottom>
             {error.status === 404 && (
               <>
@@ -29,12 +29,16 @@ function ErrorMesages() {
                 in the database
               </>
             )}
+            
             {error.status !== 404 && <>An error has occurred</>}
           </Typography>
+
           <br />
+
           <Typography align="center" variant="subtitle2" gutterBottom>
             Status: {error.status}
           </Typography>
+
         </Stack>
       </>
     </Fade>

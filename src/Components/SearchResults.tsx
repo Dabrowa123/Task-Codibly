@@ -3,13 +3,13 @@ import ErrorMesages from "./ErrorMessages";
 import useFetchData from "../hooks/useFetchData";
 
 function SearchResults() {
-  const [isSuccess, isError, isFetching] = useFetchData();
+  const [Data, Error, isFetching] = useFetchData();
 
   return (
     <>
-      {isError && <ErrorMesages />}
+      {Error && <ErrorMesages />}
 
-      {isSuccess && !isError && !isFetching && <CustomizedTable />}
+      {Data && !Error && !isFetching && <CustomizedTable />}
     </>
   );
 }
