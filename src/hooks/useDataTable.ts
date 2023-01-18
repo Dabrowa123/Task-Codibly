@@ -29,17 +29,7 @@ function useDataTable() {
 
   const [data] = useFetchData();
 
-  const query = useSelector((state: RootState) => {
-    return state.query[0];
-  });
-
-  let rows: any;
-
-  if (query.match(/id/i)) {
-    rows = [data?.data] || [];
-  } else {
-    rows = data?.data || [];
-  }
+  let rows = data || [];
 
   return [rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage];
 }
