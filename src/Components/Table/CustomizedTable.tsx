@@ -44,10 +44,7 @@ function CustomizedTable() {
                 key={rowData?.name}
                 sx={{
                   backgroundColor: `${rowData?.color}`,
-                  cursor: "pointer",
-                  "&:hover": {
-                    filter: "brightness(110%)",
-                  },
+
                 }}
                 onClick={() => handleShowModal(rowData)}
               >
