@@ -16,30 +16,33 @@ function ErrorMesages() {
   return (
     <Fade>
       <>
-      {error && "status" in error && (
-        <Stack
-          justifyContent="center"
-          alignItems="center"
-          sx={{ marginTop: 3, padding: 5, height: 270 }}
-        >
-          <Typography align="center" variant="subtitle1" gutterBottom>
-            {error.status === 404 && (
-              <>
-                There is no prodct with ID
-                <Typography variant="h6">{searchedId}</Typography>
-                in the database
-              </>
-            )}
+        {error && "status" in error && (
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            sx={{ marginTop: 3, padding: 5, height: 270 }}
+          >
+            <Typography align="center" variant="subtitle1" gutterBottom>
+              {error.status === 404 && (
+                <>
+                  There is no prodct with ID
+                  <Typography sx={{ fontSize: "25px" }}>
+                    {searchedId}
+                  </Typography>
+                  in the database
+                </>
+              )}
 
-            {error.status !== 404 && <>An error has occurred</>}
-          </Typography>
+              {error.status !== 404 && <>An error has occurred</>}
+            </Typography>
 
-          <br />
+            <br />
 
-          <Typography align="center" variant="subtitle2" gutterBottom>
-            Status: {error.status}
-          </Typography>
-        </Stack>)}
+            <Typography align="center" variant="subtitle2" gutterBottom>
+              Status: {error.status}
+            </Typography>
+          </Stack>
+        )}
       </>
     </Fade>
   );

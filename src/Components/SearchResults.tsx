@@ -4,15 +4,15 @@ import { useFetchProductsQuery, RootState } from "../store";
 import { useSelector } from "react-redux";
 
 function SearchResults() {
-  const { isSuccess, isError, isFetching } = useFetchProductsQuery(
+  const { data, error, isFetching } = useFetchProductsQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
   return (
     <>
-      {isError && <ErrorMesages />}
+      {error && <ErrorMesages />}
 
-      {isSuccess && !isError && !isFetching && <CustomizedTable />}
+      {data && !error && !isFetching && <CustomizedTable />}
     </>
   );
 }
