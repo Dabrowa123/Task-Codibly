@@ -57,35 +57,6 @@ const productsApi = createApi({
           };
         },
       }),
-      // fetchProducts: builder.query<any, any>({
-      //   query: (idAndPageParams) => {
-      //     // set query
-      //     if (idAndPageParams.id !== "") {
-      //       return {
-      //         url: `/products?id=${idAndPageParams.id}`,
-      //         method: "GET",
-      //       };
-      //     } else if (idAndPageParams.page > 0) {
-      //       return {
-      //         url: `/products?page=${idAndPageParams.page + 1}`,
-      //         method: "GET",
-      //       };
-      //     } else {
-      //       return {
-      //         url: `/products?page=1`,
-      //         method: "GET",
-      //       };
-      //     }
-      //   },
-      //   transformResponse: (response: any, meta, args) => {
-      //     // response data normalization
-      //     if (args.id !== "") {
-      //       return [response.data];
-      //     } else {
-      //       return response.data;
-      //     }
-      //   },
-      // }),
     };
   },
 });
@@ -93,4 +64,4 @@ const productsApi = createApi({
 export const { useFetchPageQuery, useFetchIdQuery } = productsApi;
 export { productsApi };
 
-export type { PageEndPoint, IdEndpoint, Support };
+export type { PageEndPoint, IdEndpoint, Product, Support };

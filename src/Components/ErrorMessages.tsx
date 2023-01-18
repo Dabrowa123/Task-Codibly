@@ -1,11 +1,11 @@
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { useFetchProductsQuery, RootState } from "../store";
+import { RootState, useFetchIdQuery } from "../store";
 import { useSelector } from "react-redux";
 import Fade from "@mui/material/Fade";
 
 function ErrorMesages() {
-  const { error } = useFetchProductsQuery(
+  const { error } = useFetchIdQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
 

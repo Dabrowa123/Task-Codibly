@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   setPage,
   RootState,
-  useFetchProductsQuery,
   setModalData,
   openModal,
 } from "../store";
@@ -32,11 +31,11 @@ function useDataTable() {
 
   // Creating rows data
 
-  const { data } = useFetchProductsQuery(
-    useSelector((state: RootState) => state.idAndPageParams)
-  );
+  // const { data } = useFetchProductsQuery(
+  //   useSelector((state: RootState) => state.idAndPageParams)
+  // );
 
-  let rows = data || [];
+  // let rows = data || [];
 
   // Show modal
 
@@ -46,12 +45,12 @@ function useDataTable() {
   };
 
   return [
-    rows,
-    page,
-    rowsPerPage,
-    handleChangePage,
-    handleChangeRowsPerPage,
-    handleShowModal,
+    // rows,
+    // page,
+    // rowsPerPage,
+    // handleChangePage,
+    // handleChangeRowsPerPage,
+    // handleShowModal,
   ];
 }
 

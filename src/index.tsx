@@ -19,7 +19,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <DynamicBacground />
+        {/* <DynamicBacground /> */}
         <App />
       </ThemeProvider>
 
