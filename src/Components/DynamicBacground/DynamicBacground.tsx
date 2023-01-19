@@ -1,17 +1,14 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/index";
 import BackgroundId from "./BackgroundId";
 import BackgroundPage from "./BackgroundPage";
+import useIsFiltering from "../../hooks/useIsFiltering";
 
 function DynamicBacground() {
-  const SearchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
-  });
+  const isFiltering = useIsFiltering();
 
   return (
     <>
-      {SearchedId !== "" && <BackgroundId />}
-      {SearchedId === "" && <BackgroundPage />}
+      {isFiltering && <BackgroundId />}
+      {!isFiltering && <BackgroundPage />}
     </>
   );
 }

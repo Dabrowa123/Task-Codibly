@@ -4,16 +4,11 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, setId } from "../store";
-import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
 import LoadingBar from "./LoadingBar/LoadingBar";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
-  
-  // const { isFetching } = useFetchProductsQuery(
-  //   useSelector((state: RootState) => state.idAndPageParams)
-  // );
 
   const searchTerm = useSelector((state: RootState) => {
     return state.idAndPageParams.id;

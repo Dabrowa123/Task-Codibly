@@ -12,14 +12,15 @@ import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 import SearchedPageTableBody from "./SearchdPageTableBody";
 import SearchedIdTableBody from "./SearchedIdTableBody";
+import usePagination from "../../hooks/usePagination";
+import useIsFiltering from "../../hooks/useIsFiltering";
 
 function CustomizedTable() {
   // const [page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
   //   usePagination();
+  // const [, , handleChangePage] = usePagination();
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
-  });
+  const isFiltering = useIsFiltering();
 
   // pagination control
 
@@ -53,12 +54,12 @@ function CustomizedTable() {
             </TableRow>
           </TableHead>
 
-          {searchedId !== "" && <SearchedIdTableBody />}
-          {searchedId === "" && <SearchedPageTableBody />}
+          {isFiltering && <SearchedIdTableBody />}
+          {!isFiltering && <SearchedPageTableBody />}
         </Table>
       </TableContainer>
 
-      {searchedId === "" && (
+      {!isFiltering && (
         <TablePagination
           component="div"
           count={12}

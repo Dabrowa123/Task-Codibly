@@ -1,18 +1,14 @@
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
 import ErrorId from "./ErrorId";
 import ErrorPage from "./ErrorPage";
+import useIsFiltering from "../../hooks/useIsFiltering";
 
 function ErrorMesages() {
-
-  const searchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
-  });
+  const isFiltering = useIsFiltering();
 
   return (
     <>
-      {searchedId !== "" && <ErrorId />}
-      {searchedId === "" && <ErrorPage />}
+      {isFiltering && <ErrorId />}
+      {!isFiltering && <ErrorPage />}
     </>
   );
 }
