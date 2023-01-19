@@ -1,5 +1,36 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+type PageEndPoint = {
+  page: number;
+  per_page: number;
+  support: { url: string };
+  total: number;
+  total_pages: number;
+  data: Product[];
+};
+
+type IdEndpoint = {
+  data: Product;
+  support: Support;
+};
+
+type Product = {
+  id: number;
+  name: string;
+  year: number;
+  color: string;
+  pantone_value: string;
+};
+
+type Support = {
+  url: string;
+};
+
+type idAndPage = {
+  id: string;
+  page: number;
+};
+
 const productsApi = createApi({
   reducerPath: "products",
   baseQuery: fetchBaseQuery({
@@ -7,38 +38,27 @@ const productsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchProducts: builder.query<any, any>({
+      fetchPage: builder.query<PageEndPoint, idAndPage>({
         query: (idAndPageParams) => {
-          // set query
-          if (idAndPageParams.id !== "") {
-            return {
-              url: `/products?id=${idAndPageParams.id}`,
-              method: "GET",
-            };
-          } else if (idAndPageParams.page > 0) {
-            return {
-              url: `/products?page=${idAndPageParams.page + 1}`,
-              method: "GET",
-            };
-          } else {
-            return {
-              url: `/products?page=1`,
-              method: "GET",
-            };
-          }
+          return {
+            url: `/products?page=${idAndPageParams.page + 1}`,
+            method: "GET",
+          };
         },
-        transformResponse: (response: any, meta, args) => {
-          // response data normalization
-          if (args.id !== "") {
-            return [response.data];
-          } else {
-            return response.data;
-          }
+      }),
+      fetchId: builder.query<IdEndpoint, idAndPage>({
+        query: (idAndPageParams) => {
+          return {
+            url: `/products?id=${idAndPageParams.id}`,
+            method: "GET",
+          };
         },
       }),
     };
   },
 });
 
-export const { useFetchProductsQuery } = productsApi;
+export const { useFetchPageQuery, useFetchIdQuery } = productsApi;
 export { productsApi };
+
+export type { PageEndPoint, IdEndpoint, Product, Support };

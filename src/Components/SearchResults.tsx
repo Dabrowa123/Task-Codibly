@@ -1,10 +1,10 @@
-import CustomizedTable from "./Table/CustomizedTable";
-import ErrorMesages from "./ErrorMessages";
-import { useFetchProductsQuery, RootState } from "../store";
+import CustomizedTable from "./CustomizedTable/CustomizedTable";
+import ErrorMesages from "./ErrorMessages/ErrorMessages";
+import { RootState, useFetchIdQuery } from "../store";
 import { useSelector } from "react-redux";
 
 function SearchResults() {
-  const { data, error, isFetching } = useFetchProductsQuery(
+  const { data, error, isFetching } = useFetchIdQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
 

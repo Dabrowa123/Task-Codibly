@@ -1,30 +1,22 @@
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import ProductModal from "../ProductModal";
-import useDataTable from "../../hooks/useTable";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/index";
+import ProductModal from "../ProductModal/ProductModal";
 import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
+import SearchedPageTableBody from "./SearchdPageTableBody";
+import SearchedIdTableBody from "./SearchedIdTableBody";
+import usePagination from "../../hooks/usePagination";
+import useIsFiltering from "../../hooks/useIsFiltering";
 
 function CustomizedTable() {
-  const [
-    rows,
-    page,
-    rowsPerPage,
-    handleChangePage,
-    handleChangeRowsPerPage,
-    handleShowModal,
-  ] = useDataTable();
+  const {page, rowsPerPage, handleChangePage, handleChangeRowsPerPage} =
+    usePagination();
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
-  });
+  const isFiltering = useIsFiltering();
 
   return (
     <>
@@ -37,31 +29,13 @@ function CustomizedTable() {
               <StyledTableCell align="right">Year</StyledTableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {rows.slice(0, 5).map((rowData: any) => (
-              <TableRow
-                data-testid="tableRow"
-                key={rowData?.name}
-                sx={{
-                  backgroundColor: `${rowData?.color}`,
 
-                }}
-                onClick={() => handleShowModal(rowData)}
-              >
-                <StyledTableCell width="5%">{rowData?.id}</StyledTableCell>
-                <StyledTableCell width="70%" align="left">
-                  {rowData?.name}
-                </StyledTableCell>
-                <StyledTableCell width="25%" align="right">
-                  {rowData?.year}
-                </StyledTableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          {isFiltering && <SearchedIdTableBody />}
+          {!isFiltering && <SearchedPageTableBody />}
         </Table>
       </TableContainer>
 
-      {searchedId === "" && (
+      {!isFiltering && (
         <TablePagination
           component="div"
           count={12}
