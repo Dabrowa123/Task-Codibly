@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { useFetchIdQuery, RootState } from "../../store";
+import { useFetchPageQuery, RootState } from "../../store";
 import LinearProgress from "@mui/material/LinearProgress";
 
 function LoaderPage() {
-  const { isFetching } = useFetchIdQuery(
+  const { isFetching } = useFetchPageQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
