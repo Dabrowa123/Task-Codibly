@@ -1,13 +1,11 @@
 import * as React from "react";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import ProductModal from "../ProductModal/ProductModal";
-import useDataTable from "../../hooks/useTable";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, setPage } from "../../store/index";
 import StyledTableCell from "./StyledTableCell";
@@ -16,27 +14,22 @@ import SearchedPageTableBody from "./SearchdPageTableBody";
 import SearchedIdTableBody from "./SearchedIdTableBody";
 
 function CustomizedTable() {
-  // const [
-  //   rows,
-  //   page,
-  //   rowsPerPage,
-  //   handleChangePage,
-  //   handleChangeRowsPerPage,
-  //   handleShowModal,
-  // ] = useDataTable();
+  // const [page, rowsPerPage, handleChangePage, handleChangeRowsPerPage] =
+  //   usePagination();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
   });
 
   // pagination control
-  const dispatch = useDispatch();
+
   const page = useSelector((state: RootState) => {
     return state.idAndPageParams.page;
   });
 
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
+  const dispatch = useDispatch();
   const handleChangePage = (event: unknown, newPage: number) => {
     dispatch(setPage(newPage));
   };
@@ -59,33 +52,13 @@ function CustomizedTable() {
               <StyledTableCell align="right">Year</StyledTableCell>
             </TableRow>
           </TableHead>
+
           {searchedId !== "" && <SearchedIdTableBody />}
           {searchedId === "" && <SearchedPageTableBody />}
-
-          {/* <TableBody>
-            {rows.slice(0, 5).map((rowData: any) => (
-              <TableRow
-                data-testid="tableRow"
-                key={rowData?.name}
-                sx={{
-                  backgroundColor: `${rowData?.color}`,
-                }}
-                onClick={() => handleShowModal(rowData)}
-              >
-                <StyledTableCell width="5%">{rowData?.id}</StyledTableCell>
-                <StyledTableCell width="70%" align="left">
-                  {rowData?.name}
-                </StyledTableCell>
-                <StyledTableCell width="25%" align="right">
-                  {rowData?.year}
-                </StyledTableCell>
-              </TableRow>
-            ))}
-          </TableBody> */}
         </Table>
       </TableContainer>
 
-      {searchedId === "" && 
+      {searchedId === "" && (
         <TablePagination
           component="div"
           count={12}
@@ -96,7 +69,7 @@ function CustomizedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
           labelDisplayedRows={(page) => createPaginationLabel(page)}
         />
-      }
+      )}
 
       <ProductModal />
     </>

@@ -3,10 +3,8 @@ import TableRow from "@mui/material/TableRow";
 import StyledTableCell from "./StyledTableCell";
 import {
   useFetchPageQuery,
-  useFetchIdQuery,
   RootState,
   setModalData,
-  setPage,
   openModal,
 } from "../../store";
 import { Product } from "../../store/apis/productsApi";
@@ -18,7 +16,6 @@ export default function SearchedPageTableBody() {
   );
 
   const rows = data?.data || [];
-  console.log(data);
 
   const dispatch = useDispatch();
   const handleShowModal = (rowData: Product) => {

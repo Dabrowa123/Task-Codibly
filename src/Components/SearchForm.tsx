@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, setId } from "../store";
 import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
+import LoadingBar from "./LoadingBar/LoadingBar";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export default function SearchForm() {
         />
       </FormControl>
 
-      {/* {isFetching && <LinearProgress />} */}
+      <LoadingBar />
     </Stack>
   );
 }

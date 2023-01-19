@@ -1,8 +1,7 @@
 import CustomizedTable from "./CustomizedTable/CustomizedTable";
-import ErrorMesages from "./ErrorMessages";
+import ErrorMesages from "./ErrorMessages/ErrorMessages";
 import { RootState, useFetchIdQuery } from "../store";
 import { useSelector } from "react-redux";
-import useFetchData from "../hooks/useFetchData";
 
 function SearchResults() {
   const { data, error, isFetching } = useFetchIdQuery(

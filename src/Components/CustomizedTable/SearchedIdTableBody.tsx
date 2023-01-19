@@ -2,14 +2,12 @@ import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import StyledTableCell from "./StyledTableCell";
 import {
-  useFetchPageQuery,
   useFetchIdQuery,
   RootState,
   setModalData,
   openModal,
 } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { Product } from "../../store/apis/productsApi";
 
 export default function SearchedIdTableBody() {
   const { data } = useFetchIdQuery(

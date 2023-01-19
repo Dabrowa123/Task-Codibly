@@ -1,10 +1,10 @@
+import { useSelector } from "react-redux";
+import { useFetchIdQuery, RootState } from "../../store";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { RootState, useFetchIdQuery } from "../store";
-import { useSelector } from "react-redux";
 import Fade from "@mui/material/Fade";
 
-function ErrorMesages() {
+function ErrorId() {
   const { error } = useFetchIdQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
@@ -48,4 +48,4 @@ function ErrorMesages() {
   );
 }
 
-export default ErrorMesages;
+export default ErrorId;
