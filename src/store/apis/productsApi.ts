@@ -26,6 +26,11 @@ type Support = {
   url: string;
 };
 
+type idAndPage = {
+  id: string;
+  page: number;
+};
+
 const productsApi = createApi({
   reducerPath: "products",
   baseQuery: fetchBaseQuery({
@@ -33,23 +38,15 @@ const productsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchPage: builder.query<PageEndPoint, any>({
+      fetchPage: builder.query<PageEndPoint, idAndPage>({
         query: (idAndPageParams) => {
-          // set query
-          if (idAndPageParams.page > 0) {
-            return {
-              url: `/products?page=${idAndPageParams.page + 1}`,
-              method: "GET",
-            };
-          } else {
-            return {
-              url: `/products?page=1`,
-              method: "GET",
-            };
-          }
+          return {
+            url: `/products?page=${idAndPageParams.page + 1}`,
+            method: "GET",
+          };
         },
       }),
-      fetchId: builder.query<IdEndpoint, any>({
+      fetchId: builder.query<IdEndpoint, idAndPage>({
         query: (idAndPageParams) => {
           return {
             url: `/products?id=${idAndPageParams.id}`,

@@ -1,19 +1,20 @@
 import * as React from "react";
-import {
-  setPage,
-  RootState,
-} from "../store";
+import { setPage, RootState } from "../store";
 import { useSelector, useDispatch } from "react-redux";
 
 function usePagination() {
+  const dispatch = useDispatch();
+
   const page = useSelector((state: RootState) => {
     return state.idAndPageParams.page;
   });
-  
+
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
-  
-  const dispatch = useDispatch();
-  const handleChangePage = (event: unknown, newPage: number) => {
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+    newPage: number
+  ) => {
     dispatch(setPage(newPage));
   };
 
@@ -24,12 +25,12 @@ function usePagination() {
     dispatch(setPage(0));
   };
 
-  return [
+  return {
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
-  ];
+  };
 }
 
 export default usePagination;

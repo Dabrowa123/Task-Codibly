@@ -8,16 +8,17 @@ import {
   openModal,
 } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
+import { Product } from "../../store/apis/productsApi";
 
 export default function SearchedIdTableBody() {
   const { data } = useFetchIdQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
-  const rowData = data?.data;
+  const rowData = data?.data || null;
 
   const dispatch = useDispatch();
-  const handleShowModal = (rowData: unknown) => {
+  const handleShowModal = (rowData: Product | null) => {
     dispatch(setModalData(rowData));
     dispatch(openModal(true));
   };

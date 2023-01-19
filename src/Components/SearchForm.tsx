@@ -1,3 +1,4 @@
+import * as React from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -14,14 +15,15 @@ export default function SearchForm() {
     return state.idAndPageParams.id;
   });
 
-  const handleSearchNumbersOnly = (event: any) => {
+  const handleSearchNumbersOnly = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     dispatch(setId(event.target.value.replace(/\D/g, "")));
   };
 
   return (
     <Stack sx={{ height: 110 }}>
       <FormControl sx={{ marginTop: 3, paddingBottom: 5, height: 40 }}>
-
         <InputLabel htmlFor="component-outlined">Filter by ID</InputLabel>
 
         <OutlinedInput
