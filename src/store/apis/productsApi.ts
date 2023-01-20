@@ -9,7 +9,7 @@ type PageEndPoint = {
   data: Product[];
 };
 
-type IdEndpoint = {
+type IdEndPoint = {
   data: Product;
   support: Support;
 };
@@ -26,7 +26,7 @@ type Support = {
   url: string;
 };
 
-type idAndPage = {
+type IdAndPage = {
   id: string;
   page: number;
 };
@@ -38,7 +38,7 @@ const productsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchPage: builder.query<PageEndPoint, idAndPage>({
+      fetchPage: builder.query<PageEndPoint, IdAndPage>({
         query: (idAndPageParams) => {
           return {
             url: `/products?page=${idAndPageParams.page + 1}`,
@@ -46,7 +46,7 @@ const productsApi = createApi({
           };
         },
       }),
-      fetchId: builder.query<IdEndpoint, idAndPage>({
+      fetchId: builder.query<IdEndPoint, IdAndPage>({
         query: (idAndPageParams) => {
           return {
             url: `/products?id=${idAndPageParams.id}`,
@@ -61,4 +61,4 @@ const productsApi = createApi({
 export const { useFetchPageQuery, useFetchIdQuery } = productsApi;
 export { productsApi };
 
-export type { PageEndPoint, IdEndpoint, Product, Support };
+export type { PageEndPoint, IdEndPoint, Product, Support };

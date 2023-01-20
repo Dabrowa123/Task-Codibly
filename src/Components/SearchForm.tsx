@@ -6,9 +6,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, setId } from "../store";
 import Stack from "@mui/material/Stack";
-import LoadingBar from "./LoadingBar/LoadingBar";
+import LinearProgress from "@mui/material/LinearProgress";
+import useGetData from "../hooks/useGetData";
 
 export default function SearchForm() {
+  const { isFetching } = useGetData();
+
   const dispatch = useDispatch();
 
   const searchTerm = useSelector((state: RootState) => {
@@ -36,7 +39,7 @@ export default function SearchForm() {
         />
       </FormControl>
 
-      <LoadingBar />
+      {isFetching && <LinearProgress />}
     </Stack>
   );
 }

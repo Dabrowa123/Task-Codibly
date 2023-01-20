@@ -1,13 +1,12 @@
-import { useSelector } from "react-redux";
-import { useFetchIdQuery, RootState } from "../../store";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Fade from "@mui/material/Fade";
+import useGetData from "../hooks/useGetData";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
-function ErrorId() {
-  const { error } = useFetchIdQuery(
-    useSelector((state: RootState) => state.idAndPageParams)
-  );
+function ErrorMesages() {
+  const { error } = useGetData();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
@@ -48,4 +47,4 @@ function ErrorId() {
   );
 }
 
-export default ErrorId;
+export default ErrorMesages;
