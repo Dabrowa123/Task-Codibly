@@ -13,7 +13,7 @@ function useFetchPage(): [
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
-  const products = data?.data || [];
+  const products = data?.data.slice(0, 5) || [];
 
   return [products, error, isFetching];
 }

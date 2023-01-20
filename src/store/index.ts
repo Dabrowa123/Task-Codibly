@@ -19,24 +19,18 @@ const store = configureStore({
     modal: modalReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(productsApi.middleware);
-  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: { warnAfter: 128 },
+      serializableCheck: { warnAfter: 128 },
+    }).concat(productsApi.middleware),
+  // middleware: (getDefaultMiddleware) => {
+  //   return getDefaultMiddleware().concat(productsApi.middleware);
+  // },
 });
 
 setupListeners(store.dispatch);
 
-export {
-  store,
-  setId,
-  setPage,
-  setModalData,
-  openModal,
-  closeModal
-};
+export { store, setId, setPage, setModalData, openModal, closeModal };
 export { useFetchPageQuery, useFetchIdQuery } from "./apis/productsApi";
 export type RootState = ReturnType<typeof store.getState>;
-
-
-
-

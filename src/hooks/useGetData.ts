@@ -20,8 +20,8 @@ function useGetData() {
 
   const isFiltering = useIsFiltering();
 
-  const SearchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
+  const idAndPageParams = useSelector((state: RootState) => {
+    return state.idAndPageParams;
   });
 
   React.useEffect(() => {
@@ -34,8 +34,9 @@ function useGetData() {
       setError(pageError);
       setIsFetching(isPageFetching);
     }
-  }, [[], SearchedId]);
-
+  }, [idAndPageParams]);
+  // console.log(SearchedId);
+  // console.log(data);
   return { data, error, isFetching };
 }
 

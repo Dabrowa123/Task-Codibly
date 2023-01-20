@@ -12,8 +12,9 @@ function useFetchId(): [
   const { data, error, isFetching } = useFetchIdQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
-
+  console.log(data);
   let products: Product[] = [];
+  console.log(products);
 
   if (data) {
     if ("data" in data) {
