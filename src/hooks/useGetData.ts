@@ -34,9 +34,8 @@ function useGetData() {
       setError(pageError);
       setIsFetching(isPageFetching);
     }
-  }, [idAndPageParams]);
-  // console.log(SearchedId);
-  // console.log(data);
+  }, [idAndPageParams, isFiltering, isIdFetching, isPageFetching]);
+
   return { data, error, isFetching };
 }
 

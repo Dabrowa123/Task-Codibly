@@ -13,6 +13,7 @@ function useFetchPage(): [
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
+  // normalization of fetching results
   const products = data?.data.slice(0, 5) || [];
 
   return [products, error, isFetching];
