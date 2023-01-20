@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
-  
+
   const { isFetching } = useFetchProductsQuery(
     useSelector((state: RootState) => state.idAndPageParams)
   );
@@ -18,14 +18,15 @@ export default function SearchForm() {
     return state.idAndPageParams.id;
   });
 
-  const handleSearchNumbersOnly = (event: any) => {
+  const handleSearchNumbersOnly = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     dispatch(setId(event.target.value.replace(/\D/g, "")));
   };
 
   return (
     <Stack sx={{ height: 110 }}>
       <FormControl sx={{ marginTop: 3, paddingBottom: 5, height: 40 }}>
-
         <InputLabel htmlFor="component-outlined">Filter by ID</InputLabel>
 
         <OutlinedInput

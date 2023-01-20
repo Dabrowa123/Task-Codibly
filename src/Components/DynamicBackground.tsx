@@ -10,7 +10,7 @@ function DynamicBacground() {
 
   const products = data || [];
 
-  const colors = products.slice(0, 5).map((rows: any) => rows?.color);
+  const colors = products.slice(0, 5).map((rows) => rows?.color);
 
   const [strippedBackground, setStrippedBackground] = React.useState({
     pattern: "",

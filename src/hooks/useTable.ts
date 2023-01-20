@@ -7,10 +7,11 @@ import {
   openModal,
 } from "../store";
 import { useSelector, useDispatch } from "react-redux";
+import { Product } from "../store/apis/productsApi";
 
 function useDataTable() {
   const dispatch = useDispatch();
-  
+
   // pagination control
 
   const page = useSelector((state: RootState) => {
@@ -19,7 +20,10 @@ function useDataTable() {
 
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+    newPage: number
+  ) => {
     dispatch(setPage(newPage));
   };
 
@@ -40,8 +44,8 @@ function useDataTable() {
 
   // Show modal
 
-  const handleShowModal = (rowData: any) => {
-    dispatch(setModalData(rowData));
+  const handleShowModal = (product: Product) => {
+    dispatch(setModalData(product));
     dispatch(openModal(true));
   };
 
