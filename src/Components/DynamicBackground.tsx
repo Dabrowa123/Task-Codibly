@@ -29,7 +29,6 @@ function DynamicBacground() {
         size: "600px 600px",
       });
     }
-  // eslint-disable-next-line
   }, [data]);
 
   return (

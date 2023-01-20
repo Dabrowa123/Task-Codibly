@@ -9,7 +9,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { Product } from "../store/apis/productsApi";
 
-function useDataTable() {
+function useTable() {
   const dispatch = useDispatch();
 
   // pagination control
@@ -59,4 +59,4 @@ function useDataTable() {
   };
 }
 
-export default useDataTable;
+export default useTable;

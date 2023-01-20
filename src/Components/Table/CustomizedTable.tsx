@@ -6,7 +6,7 @@ import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import ProductModal from "../ProductModal";
-import useDataTable from "../../hooks/useTable";
+import useTable from "../../hooks/useTable";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/index";
 import StyledTableCell from "./StyledTableCell";
@@ -20,10 +20,10 @@ function CustomizedTable() {
     handleChangePage,
     handleChangeRowsPerPage,
     handleShowModal,
-  } = useDataTable();
+  } = useTable();
 
-  const searchedId = useSelector((state: RootState) => {
-    return state.idAndPageParams.id;
+  const isFiltering = useSelector((state: RootState) => {
+    return state.idAndPageParams.id === "" ? true : false;
   });
 
   return (
@@ -60,7 +60,7 @@ function CustomizedTable() {
         </Table>
       </TableContainer>
 
-      {searchedId === "" && (
+      {isFiltering && (
         <TablePagination
           component="div"
           count={12}
