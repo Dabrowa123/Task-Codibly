@@ -4,7 +4,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { idAndPageParamsReducer } from "../store/slices/idAndPageParamsSlice";
 import { modalReducer } from "../store/slices/modalSlice";
-import { queryReducer } from "../store/slices/querySlice";
 import { productsApi } from "../store/apis/productsApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -15,7 +14,6 @@ export function renderWithProviders(
     store = configureStore({
       reducer: {
         idAndPageParams: idAndPageParamsReducer,
-        query: queryReducer,
         modal: modalReducer,
         [productsApi.reducerPath]: productsApi.reducer,
       },

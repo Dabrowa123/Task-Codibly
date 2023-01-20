@@ -13,14 +13,14 @@ import StyledTableCell from "./StyledTableCell";
 import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const [
+  const {
     rows,
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
     handleShowModal,
-  ] = useDataTable();
+  } = useDataTable();
 
   const searchedId = useSelector((state: RootState) => {
     return state.idAndPageParams.id;
@@ -38,13 +38,12 @@ function CustomizedTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(0, 5).map((rowData: any) => (
+            {rows.map((rowData) => (
               <TableRow
                 data-testid="tableRow"
                 key={rowData?.name}
                 sx={{
                   backgroundColor: `${rowData?.color}`,
-
                 }}
                 onClick={() => handleShowModal(rowData)}
               >

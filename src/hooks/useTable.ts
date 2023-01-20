@@ -49,14 +49,14 @@ function useDataTable() {
     dispatch(openModal(true));
   };
 
-  return [
+  return {
     rows,
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
     handleShowModal,
-  ];
+  };
 }
 
 export default useDataTable;
