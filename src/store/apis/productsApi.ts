@@ -1,35 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export type Product = {
-  id: number;
-  name: string;
-  year: number;
-  color: string;
-  pantone_value: string;
-};
-
-type PageEndPoint = {
-  page: number;
-  per_page: number;
-  support: { url: string };
-  total: number;
-  total_pages: number;
-  data: Product[];
-};
-
-type IdEndPoint = {
-  data: Product;
-  support: Support;
-};
-
-type Support = {
-  url: string;
-};
-
-type IdAndPage = {
-  id: string;
-  page: number;
-};
+import {
+  Product,
+  IdAndPage,
+  PageEndPoint,
+  IdEndPoint,
+} from "../../types/types";
 
 const productsApi = createApi({
   reducerPath: "products",
@@ -46,13 +21,13 @@ const productsApi = createApi({
               url: `/products?id=${idAndPageParams.id}`,
               method: "GET",
             };
-          // set query when user is not filtering
+            // set query when user is not filtering
           } else {
             return {
               url: `/products?page=${idAndPageParams.page + 1}`,
               method: "GET",
             };
-          };
+          }
         },
         transformResponse: async (
           response: PageEndPoint | IdEndPoint,

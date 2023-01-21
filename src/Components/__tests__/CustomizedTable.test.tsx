@@ -1,4 +1,4 @@
-import CustomizedTable from "../Table/CustomizedTable";
+import CustomizedTable from "../CustomizedTable/CustomizedTable";
 import { fireEvent, screen } from "@testing-library/react";
 import { renderWithProviders } from "../../utils/test-utils";
 

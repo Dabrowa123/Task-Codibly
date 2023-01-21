@@ -7,7 +7,7 @@ import {
   openModal,
 } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { Product } from "../store/apis/productsApi";
+import { Product } from "../types/types";
 
 function useTable() {
   const dispatch = useDispatch();
