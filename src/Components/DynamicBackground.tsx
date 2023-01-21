@@ -9,7 +9,7 @@ function DynamicBacground() {
   );
 
   const products = data || [];
-  console.log(data);
+
   const colors = products.map((rows) => rows?.color);
 
   const [strippedBackground, setStrippedBackground] = React.useState({
@@ -30,7 +30,7 @@ function DynamicBacground() {
       });
     }
     // eslint-disable-next-line
-  }, [products]);
+  }, [data]);
 
   return (
     <GlobalStyles
