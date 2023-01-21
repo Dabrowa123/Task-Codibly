@@ -9,6 +9,7 @@ import { store } from "./store/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme/theme";
+import { StyledEngineProvider } from "@mui/material/styles";
 import StatefulURL from "./Components/StatefulURL";
 import DynamicBacground from "./Components/DynamicBackground";
 
@@ -18,10 +19,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <DynamicBacground />
-        <App />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <DynamicBacground />
+          <App />
+        </ThemeProvider>
+      </StyledEngineProvider>
 
       <Router>
         <Routes>

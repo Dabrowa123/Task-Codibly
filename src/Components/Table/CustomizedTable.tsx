@@ -5,7 +5,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import ProductModal from "../ProductModal";
+import ProductModal from "../ProdutModal/ProductModal";
 import useTable from "../../hooks/useTable";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/index";
