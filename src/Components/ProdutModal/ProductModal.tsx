@@ -5,22 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, closeModal } from "../../store/index";
 import StyledModalBox from "./StyledModalBox";
 
-// const style = {
-//   position: "absolute" as "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 200,
-//   bgcolor: "background.paper",
-//   border: "2px solid #000",
-//   boxShadow: 24,
-//   p: 4,
-
-//   "@media (min-width: 500px)": {
-//     width: 400,
-//   },
-// };
-
 export default function ProductModal() {
   const { id, name, year, color, pantone_value } = useSelector(
     (state: RootState) => {
