@@ -11,7 +11,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme/theme";
 import { StyledEngineProvider } from "@mui/material/styles";
 import StatefulURL from "./Components/StatefulURL";
-import DynamicBacground from "./Components/DynamicBacground/DynamicBacground";
+import DynamicBacground from "./Components/DynamicBackground";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -37,6 +37,7 @@ function CustomizedTable() {
               <StyledTableCell align="right">Year</StyledTableCell>
             </TableRow>
           </TableHead>
+          
           <TableBody>
             {rows.map((rowData) => (
               <TableRow

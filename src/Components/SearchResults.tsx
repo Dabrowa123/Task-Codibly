@@ -1,4 +1,4 @@
-import CustomizedTable from "./Table/CustomizedTable";
+import CustomizedTable from "./CustomizedTable/CustomizedTable";
 import ErrorMesages from "./ErrorMessages";
 import { useFetchProductsQuery, RootState } from "../store";
 import { useSelector } from "react-redux";

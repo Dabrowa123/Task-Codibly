@@ -34,7 +34,7 @@ export {
   openModal,
   closeModal
 };
-export { useFetchPageQuery, useFetchIdQuery } from "./apis/productsApi";
+export { useFetchProductsQuery } from "./apis/productsApi";
 export type RootState = ReturnType<typeof store.getState>;
 
 
