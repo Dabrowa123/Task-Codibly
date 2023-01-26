@@ -30,17 +30,17 @@ export default function ProductModal() {
         aria-describedby="modal-modal-description"
       >
         <StyledModalBox>
-            <Stack direction="row" spacing={2}>
-              <Stack justifyContent="center">
-                <Box
-                  sx={{ width: 28, height: 28, backgroundColor: `${color}` }}
-                ></Box>
-              </Stack>
-
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                {name.toUpperCase()}
-              </Typography>
+          <Stack direction="row" spacing={2}>
+            <Stack justifyContent="center">
+              <Box
+                sx={{ width: 28, height: 28, backgroundColor: `${color}` }}
+              ></Box>
             </Stack>
+
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {name.toUpperCase()}
+            </Typography>
+          </Stack>
 
           <Typography sx={{ mt: 5 }}>ID: {id}</Typography>
           <Typography sx={{ mt: 2 }}>Year: {year}</Typography>
