@@ -18,7 +18,7 @@ function useTable() {
     return state.idAndPageParams.page;
   });
 
-  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
