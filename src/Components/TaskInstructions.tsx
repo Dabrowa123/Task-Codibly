@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box, { BoxProps } from "@mui/material/Box";
-import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 
 const StyledModalBox = styled(Box)<BoxProps>(({ theme }) => ({
   position: "absolute" as "absolute",

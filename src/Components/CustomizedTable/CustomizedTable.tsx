@@ -17,7 +17,7 @@ function CustomizedTable() {
   const { rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage } =
     useTable();
 
-  const { handleShowModal } = useModal();
+  const handleShowModal = useModal();
 
   const isFiltering = useSelector((state: RootState) => {
     return state.idAndPageParams.id === "" ? true : false;

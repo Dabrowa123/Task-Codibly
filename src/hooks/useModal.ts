@@ -5,16 +5,14 @@ import { Product } from "../types/types";
 function useTable() {
   const dispatch = useDispatch();
 
-  const handleShowModal = (modal: string, product?: Product) => {
+  const handleShowModal = (selectedModal: string, product?: Product) => {
     if (product) {
       dispatch(setModalData(product));
     }
-    dispatch(openModal(modal));
+    dispatch(openModal(selectedModal));
   };
 
-  return {
-    handleShowModal,
-  };
+  return handleShowModal;
 }
 
 export default useTable;

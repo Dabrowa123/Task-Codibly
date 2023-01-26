@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, closeModal } from "../../store/index";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import StyledModalBox from "./StyledModalBox";
 import CloseIcon from "@mui/icons-material/Close";
@@ -29,7 +28,7 @@ export default function InstructionsModal() {
           sx={{ width: "90%", top: 0, transform: "translate(-50%, 0%)" }}
         >
           <Stack direction="row" spacing={2}></Stack>
-          <Typography sx={{ mt: 5 }}>Task description:</Typography>
+          <Typography variant="h6" sx={{ mt: 5 }}>Task description:</Typography>
           <Typography sx={{ mt: 5 }}>
             The goal of the task is to implement SPA application with just one
             view. You should use the below API endpoint to display the paginated

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import useModal from "../hooks/useModal";
@@ -13,7 +12,7 @@ function TaskInfo() {
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
-  const { handleShowModal } = useModal();
+  const handleShowModal = useModal();
 
   return (
     <Stack sx={{ minHeight: 80 }}>

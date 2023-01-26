@@ -3,8 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, setId, useFetchProductsQuery } from "../store";
-import LinearProgress from "@mui/material/LinearProgress";
+import { RootState, setId } from "../store";
 import Stack from "@mui/material/Stack";
 
 export default function SearchForm() {

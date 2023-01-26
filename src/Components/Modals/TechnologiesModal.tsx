@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, closeModal } from "../../store/index";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import StyledModalBox from "./StyledModalBox";
 import CloseIcon from "@mui/icons-material/Close";
@@ -27,7 +26,7 @@ export default function TechnologiesModal() {
       >
         <StyledModalBox>
           <Stack direction="row" spacing={2}></Stack>
-          <Typography sx={{ mt: 5 }}>Technologies used:</Typography>
+          <Typography variant="h6" sx={{ mt: 5 }}>Technologies used:</Typography>
           <Typography sx={{ mt: 5 }}>
             - Typescript as a script language
             <br />
