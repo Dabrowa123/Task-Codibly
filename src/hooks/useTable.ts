@@ -1,13 +1,6 @@
 import * as React from "react";
-import {
-  setPage,
-  RootState,
-  useFetchProductsQuery,
-  setModalData,
-  openModal,
-} from "../store";
+import { setPage, RootState, useFetchProductsQuery } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { Product } from "../types/types";
 
 function useTable() {
   const dispatch = useDispatch();
