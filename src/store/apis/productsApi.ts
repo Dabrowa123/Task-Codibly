@@ -24,7 +24,7 @@ const productsApi = createApi({
             // set query when user is not filtering
           } else {
             return {
-              url: `/products?page=${idAndPageParams.page + 1}`,
+              url: `/products?per_page=5&page=${idAndPageParams.page + 1}`,
               method: "GET",
             };
           }
@@ -40,7 +40,7 @@ const productsApi = createApi({
             return [((await response) as IdEndPoint).data];
           } else {
             // if is not filtering: return array with 5 products from page
-            return ((await response) as PageEndPoint).data.slice(0, 5);
+            return ((await response) as PageEndPoint).data;
           }
         },
       }),

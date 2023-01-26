@@ -14,11 +14,11 @@ export default function ProductModal() {
     }
   );
   const open = useSelector((state: RootState) => {
-    return state.modal.isVisible;
+    return state.modal.isVisible.productModal;
   });
 
   const dispatch = useDispatch();
-  const handleClose = () => dispatch(closeModal(true));
+  const handleClose = () => dispatch(closeModal("productModal"));
 
   return (
     <div>
@@ -29,18 +29,20 @@ export default function ProductModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <StyledModalBox>
-            <Stack direction="row" spacing={2}>
-              <Stack justifyContent="center">
-                <Box
-                  sx={{ width: 28, height: 28, backgroundColor: `${color}` }}
-                ></Box>
-              </Stack>
-
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                {name.toUpperCase()}
-              </Typography>
+        <StyledModalBox
+          sx={{ width: 220, "@media (min-width: 500px)": { width: 300 } }}
+        >
+          <Stack direction="row" spacing={2}>
+            <Stack justifyContent="center">
+              <Box
+                sx={{ width: 28, height: 28, backgroundColor: `${color}` }}
+              ></Box>
             </Stack>
+
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {name.toUpperCase()}
+            </Typography>
+          </Stack>
 
           <Typography sx={{ mt: 5 }}>ID: {id}</Typography>
           <Typography sx={{ mt: 2 }}>Year: {year}</Typography>

@@ -10,8 +10,6 @@ describe("ProductModal Component", () => {
     const tableRow = screen.getByText("1") as unknown as Element;
     fireEvent.click(tableRow);
     const modal = screen.getByTestId("modal") as unknown as Element;
-    expect(
-      await screen.findByText("Product name: cerulean")
-    ).toBeInTheDocument();
+    expect(await screen.findByText("CERULEAN")).toBeInTheDocument();
   });
 });
