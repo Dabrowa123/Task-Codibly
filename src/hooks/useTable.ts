@@ -42,20 +42,12 @@ function useTable() {
 
   let rows = data || [];
 
-  // Show modal
-
-  const handleShowModal = (product: Product) => {
-    dispatch(setModalData(product));
-    dispatch(openModal(true));
-  };
-
   return {
     rows,
     page,
     rowsPerPage,
     handleChangePage,
     handleChangeRowsPerPage,
-    handleShowModal,
   };
 }
 

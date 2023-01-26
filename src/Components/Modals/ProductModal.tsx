@@ -14,11 +14,11 @@ export default function ProductModal() {
     }
   );
   const open = useSelector((state: RootState) => {
-    return state.modal.isVisible;
+    return state.modal.isVisible.productModal;
   });
 
   const dispatch = useDispatch();
-  const handleClose = () => dispatch(closeModal(true));
+  const handleClose = () => dispatch(closeModal("productModal"));
 
   return (
     <div>
@@ -29,7 +29,9 @@ export default function ProductModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <StyledModalBox>
+        <StyledModalBox
+          sx={{ width: 220, "@media (min-width: 500px)": { width: 300 } }}
+        >
           <Stack direction="row" spacing={2}>
             <Stack justifyContent="center">
               <Box
