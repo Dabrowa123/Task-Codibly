@@ -26,6 +26,7 @@ export const theme = createTheme({
           "@media (min-width: 380px)": {
             height: "auto",
           },
+          cursor: "initial",
         },
       },
     },

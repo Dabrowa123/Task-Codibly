@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  Product,
+  ProductsInfo,
   IdAndPage,
   PageEndPoint,
   IdEndPoint,
@@ -13,7 +13,7 @@ const productsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchProducts: builder.query<Product[], IdAndPage>({
+      fetchProducts: builder.query<ProductsInfo, IdAndPage>({
         query: (idAndPageParams) => {
           // set query when user is filtering by id
           if (idAndPageParams.id !== "") {
@@ -29,18 +29,24 @@ const productsApi = createApi({
             };
           }
         },
-        transformResponse: async (
+        transformResponse: (
           response: PageEndPoint | IdEndPoint,
           meta,
           args
         ) => {
           // response data normalization to type Product[]
           if (args.id !== "") {
-            // if user is filtering: return array with one product
-            return [((await response) as IdEndPoint).data];
+            // if user is filtering: return array with one product & total products number null
+            return {
+              totalProducts: null,
+              products: [(response as IdEndPoint).data],
+            };
           } else {
-            // if is not filtering: return array with 5 products from page
-            return ((await response) as PageEndPoint).data;
+            // if is not filtering: return array with 5 products from page & total products number
+            return {
+              totalProducts: (response as PageEndPoint).total,
+              products: (response as PageEndPoint).data,
+            };
           }
         },
       }),

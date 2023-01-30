@@ -11,11 +11,16 @@ import useModal from "../../hooks/useModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/index";
 import StyledTableCell from "./StyledTableCell";
-import createPaginationLabel from "../../helpers/createPaginationLabel";
 
 function CustomizedTable() {
-  const { rows, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage } =
-    useTable();
+  const {
+    rows,
+    page,
+    rowsPerPage,
+    totalProducts,
+    handleChangePage,
+    handleChangeRowsPerPage,
+  } = useTable();
 
   const handleShowModal = useModal();
 
@@ -61,13 +66,12 @@ function CustomizedTable() {
       {isFiltering && (
         <TablePagination
           component="div"
-          count={12}
+          count={totalProducts}
           rowsPerPageOptions={[]}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          labelDisplayedRows={(page) => createPaginationLabel(page)}
         />
       )}
 

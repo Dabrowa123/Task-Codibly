@@ -24,9 +24,13 @@ export default function TechnologiesModal() {
         aria-describedby="modal-modal-description"
         sx={{ overflow: "scroll" }}
       >
-        <StyledModalBox>
+        <StyledModalBox
+          sx={{ width: 220, "@media (min-width: 500px)": { width: 300 } }}
+        >
           <Stack direction="row" spacing={2}></Stack>
-          <Typography variant="h6" sx={{ mt: 5 }}>Technologies used:</Typography>
+          <Typography variant="h6" sx={{ mt: 5 }}>
+            Technologies used:
+          </Typography>
           <Typography sx={{ mt: 5 }}>
             - Typescript as a script language
             <br />

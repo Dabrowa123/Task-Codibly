@@ -33,12 +33,17 @@ function useTable() {
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
-  let rows = data || [];
+  let rows = data?.products || [];
+
+  // Total products
+
+  let totalProducts = data?.totalProducts || 0;
 
   return {
     rows,
     page,
     rowsPerPage,
+    totalProducts,
     handleChangePage,
     handleChangeRowsPerPage,
   };

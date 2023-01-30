@@ -8,7 +8,7 @@ function DynamicBacground() {
     useSelector((state: RootState) => state.idAndPageParams)
   );
 
-  const products = data || [];
+  const products = data?.products || [];
 
   const colors = products.map((rows) => rows?.color);
 
