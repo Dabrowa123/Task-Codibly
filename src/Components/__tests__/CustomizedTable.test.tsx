@@ -10,7 +10,7 @@ describe("CustomizedTable Component", () => {
       "Go to next page"
     ) as unknown as Element;
     fireEvent.click(nextPageButton);
-    expect(paginationLabel).toHaveTextContent("6 - 10 of 12");
+    expect(paginationLabel).toHaveTextContent("6-10 of 12");
   });
 
   it("should open modal after clicking a row", async () => {
