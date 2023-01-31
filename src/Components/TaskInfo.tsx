@@ -17,20 +17,31 @@ function TaskInfo() {
   return (
     <Stack sx={{ minHeight: 80 }}>
       <Stack
-        direction="row"
-        justifyContent="space-between"
-        sx={{ marginTop: 2, paddingBottom: 3 }}
+        sx={{
+          marginTop: 2,
+          paddingBottom: 1,
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "space-between",
+          "@media (min-width: 500px)": {
+            flexDirection: "row",
+          },
+        }}
       >
         <Button
           variant="contained"
-          sx={{ width: "48%" }}
+          sx={{
+            width: "100%",
+            mb: 1,
+            "@media (min-width: 500px)": { width: "48%", mb: 0 },
+          }}
           onClick={() => handleShowModal("instructionsModal")}
         >
           Instructions
         </Button>
         <Button
           variant="outlined"
-          sx={{ width: "48%" }}
+          sx={{ width: "100%", "@media (min-width: 500px)": { width: "48%" } }}
           onClick={() => handleShowModal("technologiesModal")}
         >
           Technologies
