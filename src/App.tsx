@@ -27,16 +27,6 @@ function App() {
           </Fade>
         </Stack>
       </Container>
-      {/* <LiveHelpIcon
-        sx={{
-          position: "absolute",
-          bottom: 50,
-          left: 50,
-          width: 40,
-          height: 40,
-          color: "white",
-        }}
-      /> */}
     </div>
   );
 }
